@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Explorador y Pruebas de Endpoints — Spring Boot API</title>
+    <!-- Google Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #060d17;
+            color: #e2e8f0;
+        }
+        pre, code, .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .api-card {
+            background-color: #0b1524;
+            border: 1px solid #1a2a42;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+        .api-card:hover {
+            border-color: #2b4366;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+    <div class="max-w-5xl mx-auto space-y-6">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#9e3d00] to-[#c64f00] flex items-center justify-center text-white shadow-lg shadow-orange-950/40">
+                    <span class="material-symbols-outlined text-[26px]">terminal</span>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+                        Explorador de Endpoints Spring Boot
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">API Activa :3000</span>
+                    </h1>
+                    <p class="text-sm text-slate-400">Ejecuta y visualiza las respuestas idénticas a las capturas de <code class="text-slate-300">docs/screenshots/</code></p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="/dashboard.html" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm font-semibold text-white transition-colors flex items-center gap-2 border border-slate-700">
+                    <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                    <span>Ir al Dashboard</span>
+                </a>
+                <button onclick="runAllTests()" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-sm font-bold text-white transition-all shadow-md active:scale-95 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                    <span>Probar Todos (1 Clic)</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Selector de Identidad / Token Activo -->
+        <div class="p-4 rounded-xl bg-[#09121f] border border-[#17253b] flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-orange-400">key</span>
+                <span class="text-sm font-semibold text-slate-200">Identidad activa para peticiones con Token:</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <button onclick="setAuthRole('ADMIN')" id="btn-role-ADMIN" class="role-selector-btn px-3 py-1.5 rounded-lg bg-orange-600 text-white text-xs font-bold transition-all shadow">
+                    👑 Admin (Roberto Noboa)
+                </button>
+                <button onclick="setAuthRole('CAJERO')" id="btn-role-CAJERO" class="role-selector-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all">
+                    💳 Cajero (Mariana Vera)
+                </button>
+                <button onclick="setAuthRole('GESTOR')" id="btn-role-GESTOR" class="role-selector-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all">
+                    🌊 Gestor (Carlos Zambrano)
+                </button>
+                <button onclick="setAuthRole('NONE')" id="btn-role-NONE" class="role-selector-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all">
+                    🚫 Sin Token (Para probar 401)
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- LISTA DE CARDS DE ENDPOINTS (IDÉNTICOS AL SCREENSHOT)                     -->
+        <!-- ========================================================================= -->
+        <div class="space-y-6">
+
+            <!-- 1. GET /api/auth/cashier-area (El del Screenshot exacto del usuario) -->
+            <div class="api-card" id="card-cashier-area">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">GET</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/cashier-area</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">ADMIN / CAJERO</span>
+                        <button onclick="testCashierArea()" class="px-3 py-1 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-emerald-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Ejecutar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">HEADERS</p>
+                        <p class="text-slate-300 truncate" id="headers-cashier-area">Authorization: Bearer eyJhbGciOiJIUzUxMiJ9...</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold" id="status-cashier-area">200</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs" id="body-cashier-area">{
+  "message": "Área de facturación y validación"
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. GET /health -->
+            <div class="api-card" id="card-health">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">GET</span>
+                        <span class="font-mono text-sm font-semibold text-white">/health</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">PÚBLICO</span>
+                        <button onclick="testHealth()" class="px-3 py-1 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-emerald-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Ejecutar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold" id="status-health">200</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs" id="body-health">{
+  "status": "OK",
+  "message": "API funcionando correctamente"
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. POST /api/auth/register -->
+            <div class="api-card" id="card-register">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-blue-600 text-white font-bold text-xs uppercase tracking-wider">POST</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/register</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">PÚBLICO</span>
+                        <button onclick="testRegister()" class="px-3 py-1 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-blue-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Ejecutar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">REQUEST BODY</p>
+                        <pre class="p-2.5 rounded-lg bg-[#060d17] border border-slate-800/80 text-slate-300 text-xs">{
+  "name": "Carlos Mendoza",
+  "email": "carlos@ruedavargas.ec",
+  "phone": "+593 98 421 9903",
+  "employeeId": "RV-099",
+  "role": "ADMIN",
+  "password": "Password123"
+}</pre>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold" id="status-register">201</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs" id="body-register">{
+  "status": "success",
+  "message": "Usuario registrado exitosamente",
+  "data": { ... }
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. POST /api/auth/login -->
+            <div class="api-card" id="card-login">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-blue-600 text-white font-bold text-xs uppercase tracking-wider">POST</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/login</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">PÚBLICO</span>
+                        <button onclick="testLogin()" class="px-3 py-1 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-blue-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Ejecutar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">REQUEST BODY</p>
+                        <pre class="p-2.5 rounded-lg bg-[#060d17] border border-slate-800/80 text-slate-300 text-xs">{
+  "email": "admin@ruedavargas.ec",
+  "password": "Password123"
+}</pre>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold" id="status-login">200</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs" id="body-login">{
+  "status": "success",
+  "message": "Autenticación exitosa",
+  "data": { ... }
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. GET /api/auth/profile -->
+            <div class="api-card" id="card-profile">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">GET</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/profile</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">AUTENTICADO</span>
+                        <button onclick="testProfile()" class="px-3 py-1 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-emerald-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Ejecutar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">HEADERS</p>
+                        <p class="text-slate-300 truncate" id="headers-profile">Authorization: Bearer ...</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold" id="status-profile">200</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs" id="body-profile">{
+  "status": "success",
+  "message": "Perfil de usuario",
+  "data": { ... }
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. GET /api/auth/admin-only -->
+            <div class="api-card" id="card-admin-only">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">GET</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/admin-only</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">ADMIN EXCLUSIVO</span>
+                        <button onclick="testAdminOnly()" class="px-3 py-1 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-emerald-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Ejecutar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">HEADERS</p>
+                        <p class="text-slate-300 truncate" id="headers-admin-only">Authorization: Bearer ...</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold" id="status-admin-only">200</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs" id="body-admin-only">{
+  "message": "Bienvenido, Administrador"
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Error 400 (Bad Request - Contraseña inválida) -->
+            <div class="api-card" id="card-error-400">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-blue-600 text-white font-bold text-xs uppercase tracking-wider">POST</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/register (Prueba Error 400)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-red-400 font-semibold">ERROR VALIDACIÓN</span>
+                        <button onclick="testError400()" class="px-3 py-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-red-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Probar 400
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">BODY (Contraseña sin mayúscula)</p>
+                        <pre class="p-2.5 rounded-lg bg-[#060d17] border border-slate-800/80 text-slate-300 text-xs">{ "email": "error@ruedavargas.ec", "password": "password123", "name": "Test" }</pre>
+                    </div>
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-amber-600 text-white text-[11px] font-bold" id="status-error-400">400</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-amber-300 overflow-x-auto text-xs" id="body-error-400">{
+  "status": "error",
+  "message": "La contraseña debe tener al menos una letra mayúscula"
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Error 401 (Unauthorized - Sin Token) -->
+            <div class="api-card" id="card-error-401">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">GET</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/profile (Prueba Error 401)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-amber-400 font-semibold">SIN TOKEN</span>
+                        <button onclick="testError401()" class="px-3 py-1 bg-amber-600/20 hover:bg-amber-600 text-amber-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-amber-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Probar 401
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">HEADERS</p>
+                        <p class="text-slate-400">(Sin cabecera Authorization)</p>
+                    </div>
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-red-600 text-white text-[11px] font-bold" id="status-error-401">401</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-red-300 overflow-x-auto text-xs" id="body-error-401">{
+  "status": "error",
+  "message": "Token de autenticación no proporcionado"
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Error 403 (Forbidden - Rol No Autorizado) -->
+            <div class="api-card" id="card-error-403">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">GET</span>
+                        <span class="font-mono text-sm font-semibold text-white">/api/auth/admin-only (Prueba Error 403 con Cajero)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-red-400 font-semibold">ROL DENEGADO</span>
+                        <button onclick="testError403()" class="px-3 py-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white rounded text-xs font-bold transition-all flex items-center gap-1 border border-red-500/30">
+                            <span class="material-symbols-outlined text-[14px]">send</span> Probar 403
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">HEADERS</p>
+                        <p class="text-slate-300 truncate" id="headers-error-403">Authorization: Bearer <TOKEN_CAJERO></p>
+                    </div>
+                    <div class="pt-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">RESPONSE</span>
+                            <span class="px-2 py-0.2 rounded bg-red-600 text-white text-[11px] font-bold" id="status-error-403">403</span>
+                        </div>
+                        <pre class="p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-red-300 overflow-x-auto text-xs" id="body-error-403">{
+  "status": "error",
+  "message": "Acceso denegado: no tienes permisos para acceder a este recurso"
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script de Ejecución Real contra Spring Boot -->
+    <script>
+        let tokens = {
+            ADMIN: '',
+            CAJERO: '',
+            GESTOR: '',
+            NONE: ''
+        };
+        let currentRole = 'ADMIN';
+
+        async function initTokens() {
+            try {
+                // Obtener token Admin
+                const rAdmin = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: 'admin@ruedavargas.ec', password: 'Password123' })
+                });
+                const dAdmin = await rAdmin.json();
+                tokens.ADMIN = dAdmin?.data?.token || '';
+
+                // Obtener token Cajero
+                const rCajero = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: 'cajero@ruedavargas.ec', password: 'Password123' })
+                });
+                const dCajero = await rCajero.json();
+                tokens.CAJERO = dCajero?.data?.token || '';
+
+                // Obtener token Gestor
+                const rGestor = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: 'gestor@ruedavargas.ec', password: 'Password123' })
+                });
+                const dGestor = await rGestor.json();
+                tokens.GESTOR = dGestor?.data?.token || '';
+
+                updateHeaderPreviews();
+            } catch (e) {
+                console.error("Error al inicializar tokens:", e);
+            }
+        }
+
+        function setAuthRole(role) {
+            currentRole = role;
+            document.querySelectorAll('.role-selector-btn').forEach(b => {
+                b.className = 'role-selector-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all';
+            });
+            document.getElementById(`btn-role-${role}`).className = 'role-selector-btn px-3 py-1.5 rounded-lg bg-orange-600 text-white text-xs font-bold transition-all shadow';
+            updateHeaderPreviews();
+        }
+
+        function getActiveToken() {
+            return tokens[currentRole] || '';
+        }
+
+        function updateHeaderPreviews() {
+            const token = getActiveToken();
+            const preview = token ? `Authorization: Bearer ${token.substring(0, 32)}...` : '(Sin cabecera Authorization)';
+            if (document.getElementById('headers-cashier-area')) document.getElementById('headers-cashier-area').textContent = preview;
+            if (document.getElementById('headers-profile')) document.getElementById('headers-profile').textContent = preview;
+            if (document.getElementById('headers-admin-only')) document.getElementById('headers-admin-only').textContent = preview;
+        }
+
+        function renderResponse(prefix, status, json) {
+            const statusEl = document.getElementById(`status-${prefix}`);
+            const bodyEl = document.getElementById(`body-${prefix}`);
+            if (statusEl) {
+                statusEl.textContent = status;
+                statusEl.className = status >= 200 && status < 300 
+                    ? 'px-2 py-0.2 rounded bg-emerald-600 text-white text-[11px] font-bold'
+                    : (status === 400 ? 'px-2 py-0.2 rounded bg-amber-600 text-white text-[11px] font-bold' : 'px-2 py-0.2 rounded bg-red-600 text-white text-[11px] font-bold');
+            }
+            if (bodyEl) {
+                bodyEl.textContent = JSON.stringify(json, null, 2);
+                bodyEl.className = status >= 200 && status < 300 
+                    ? 'p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-emerald-300 overflow-x-auto text-xs'
+                    : 'p-3 rounded-lg bg-[#060d17] border border-slate-800/80 text-red-300 overflow-x-auto text-xs';
+            }
+        }
+
+        async function testCashierArea() {
+            const token = getActiveToken() || tokens.CAJERO;
+            const res = await fetch('/api/auth/cashier-area', {
+                headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+            });
+            const data = await res.json().catch(() => ({}));
+            renderResponse('cashier-area', res.status, data);
+        }
+
+        async function testHealth() {
+            const res = await fetch('/health');
+            const data = await res.json().catch(() => ({}));
+            renderResponse('health', res.status, data);
+        }
+
+        async function testRegister() {
+            const rnd = Math.floor(Math.random() * 9000) + 1000;
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: `Operador ${rnd}`,
+                    email: `operador${rnd}@ruedavargas.ec`,
+                    phone: `+593 98 421 ${rnd}`,
+                    employeeId: `EMP-${rnd}`,
+                    role: 'ADMIN',
+                    password: 'Password123'
+                })
+            });
+            const data = await res.json().catch(() => ({}));
+            renderResponse('register', res.status, data);
+        }
+
+        async function testLogin() {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: 'admin@ruedavargas.ec', password: 'Password123' })
+            });
+            const data = await res.json().catch(() => ({}));
+            renderResponse('login', res.status, data);
+        }
+
+        async function testProfile() {
+            const token = getActiveToken();
+            const res = await fetch('/api/auth/profile', {
+                headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+            });
+            const data = await res.json().catch(() => ({}));
+            renderResponse('profile', res.status, data);
+        }
+
+        async function testAdminOnly() {
+            const token = getActiveToken();
+            const res = await fetch('/api/auth/admin-only', {
+                headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+            });
+            const data = await res.json().catch(() => ({}));
+            renderResponse('admin-only', res.status, data);
+        }
+
+        async function testError400() {
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: 'Bad User',
+                    email: 'bad@ruedavargas.ec',
+                    password: 'password123',
+                    role: 'ADMIN',
+                    employeeId: 'EMP-BAD'
+                })
+            });
+            const data = await res.json().catch(() => ({}));
+            renderResponse('error-400', res.status, data);
+        }
+
+        async function testError401() {
+            const res = await fetch('/api/auth/profile');
+            const data = await res.json().catch(() => ({}));
+            renderResponse('error-401', res.status, data);
+        }
+
+        async function testError403() {
+            const cajeroToken = tokens.CAJERO;
+            const res = await fetch('/api/auth/admin-only', {
+                headers: cajeroToken ? { 'Authorization': `Bearer ${cajeroToken}` } : {}
+            });
+            const data = await res.json().catch(() => ({}));
+            if (document.getElementById('headers-error-403')) {
+                document.getElementById('headers-error-403').textContent = `Authorization: Bearer ${cajeroToken.substring(0, 32)}...`;
+            }
+            renderResponse('error-403', res.status, data);
+        }
+
+        async function runAllTests() {
+            await testHealth();
+            await testCashierArea();
+            await testLogin();
+            await testProfile();
+            await testAdminOnly();
+            await testError400();
+            await testError401();
+            await testError403();
+        }
+
+        initTokens();
+    </script>
+</body>
+</html>

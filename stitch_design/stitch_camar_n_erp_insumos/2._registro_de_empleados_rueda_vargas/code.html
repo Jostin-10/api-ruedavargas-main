@@ -1,0 +1,536 @@
+<!DOCTYPE html><html class="h-full bg-background" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Rueda Vargas S.A. - Registro de Empleados</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface": "#191c1e",
+          "primary-fixed": "#ffdbcd",
+          "on-secondary-fixed": "#001c37",
+          "surface-container-highest": "#e0e3e5",
+          "surface-container-lowest": "#ffffff",
+          "inverse-primary": "#ffb595",
+          "surface-container-low": "#f2f4f6",
+          "primary-container": "#c64f00",
+          "on-primary-fixed-variant": "#7c2e00",
+          "tertiary-fixed": "#93f2f2",
+          "surface-container-high": "#e6e8ea",
+          "on-tertiary-container": "#f3fffe",
+          "secondary": "#49607e",
+          "outline-variant": "#e0c0b2",
+          "surface-tint": "#a23f00",
+          "on-primary-container": "#fffbff",
+          "outline": "#8c7166",
+          "tertiary": "#006767",
+          "surface": "#f8f9fb",
+          "secondary-container": "#c4dcff",
+          "surface-bright": "#f8f9fb",
+          "surface-variant": "#e0e3e5",
+          "surface-container": "#eceef0",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#76d6d5",
+          "on-secondary": "#ffffff",
+          "primary": "#9e3d00",
+          "background": "#f8f9fb",
+          "on-tertiary": "#ffffff",
+          "on-primary-fixed": "#351000",
+          "on-surface-variant": "#594238",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#ffb595",
+          "error": "#ba1a1a",
+          "on-primary": "#ffffff",
+          "tertiary-container": "#078282",
+          "on-error-container": "#93000a",
+          "on-background": "#191c1e",
+          "on-secondary-container": "#49617f",
+          "secondary-fixed": "#d2e4ff",
+          "inverse-surface": "#2d3133",
+          "on-tertiary-fixed": "#002020",
+          "surface-dim": "#d8dadc",
+          "on-tertiary-fixed-variant": "#004f4f",
+          "on-secondary-fixed-variant": "#314865",
+          "secondary-fixed-dim": "#b0c8eb",
+          "inverse-on-surface": "#eff1f3"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "2rem"
+        },
+        "fontFamily": {
+          "label-sm": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-lg-mobile": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+          "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+          "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+          "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+          "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="h-full flex overflow-hidden font-body-md text-on-surface antialiased bg-background">
+<!-- ==================== SIDENAVBAR (SHARED COMPONENT) ==================== -->
+<aside class="flex flex-col justify-between h-full w-64 p-4 border-r border-outline-variant fixed left-0 top-0 z-40 bg-primary-container shadow-sm select-none">
+<div class="flex flex-col gap-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[24px] text-primary">domain</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold text-on-primary tracking-tight">Rueda Vargas</span>
+<span class="text-label-sm font-label-sm text-on-primary-container">Administrador ERP</span>
+</div>
+</div>
+<!-- Quick CTA -->
+<button class="w-full py-2.5 px-3 rounded-lg bg-secondary text-on-secondary font-headline-sm text-headline-sm flex items-center justify-center gap-2 hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Nuevo Pedido</span>
+</button>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1.5">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-label-md font-label-md">Panel General</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="text-label-md font-label-md">Inventario &amp; Balanceados</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">point_of_sale</span>
+<span class="text-label-md font-label-md">Ventas &amp; Despachos</span>
+</a>
+<!-- ACTIVE -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-tint text-on-primary font-semibold border-l-4 border-secondary-container" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-label-md font-label-md">Clientes &amp; Personal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span class="text-label-md font-label-md">Logística &amp; Lotes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="text-label-md font-label-md">Reportes ERP</span>
+</a>
+</nav>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-col gap-1 pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="text-label-md font-label-md">Configuración</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:bg-surface-tint hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="text-label-md font-label-md">Soporte Técnico</span>
+</a>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<div class="flex-1 ml-64 flex flex-col h-full overflow-hidden">
+<!-- ==================== TOPNAVBAR (SHARED COMPONENT) ==================== -->
+<header class="flex items-center justify-between w-full h-16 px-6 bg-surface-container-lowest border-b border-outline-variant shrink-0 z-30">
+<!-- Search on Left -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">ERP Rueda Vargas</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 bg-surface-container text-on-secondary-container rounded-full">v4.8</span>
+</div>
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 rounded-lg border border-outline-variant bg-surface-bright text-body-sm font-body-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="Buscar personal, rol o cédula..." type="text">
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors" href="#">Lotes Activos</a>
+<a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors" href="#">Stock Crítico</a>
+<a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors" href="#">Guías de Remisión</a>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Descargar Balance</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary text-on-secondary text-label-md font-label-md hover:bg-on-secondary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">add_task</span>
+<span>Registrar Entrada</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<button class="p-2 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-low relative">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button class="p-2 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+<!-- User Profile Avatar -->
+<div class="flex items-center gap-2.5 pl-2">
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWSF8-tgC1GWB2Dg4kfyYJIofrjN7GWy-gYUCNmbLAcHgel5MmuMZc1F53yDGLSGcZzkgy6nxHUgrkru85xDUFRHb-vw1sNVU4Q3gClSf1q5Rrmu6_k7MQb_BJMX7gyc7_OCSQCJw1yFdvoo5uz1ZzUP9O6juTIOvZ5PGrtLCBGMIjXS6r46VaqQkVkRZVvMFqVwyUM-qMuzxgh6APGZ1HbKLuqYotEXjzw0KIeYni4ptFM6WmPTjmaw">
+<div class="hidden sm:flex flex-col text-left">
+<span class="text-label-md font-label-md text-on-surface leading-tight">Admin. Central</span>
+<span class="text-label-sm font-label-sm text-outline">Superusuario</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== WORKSPACE CANVAS ==================== -->
+<main class="flex-1 overflow-y-auto p-6 lg:p-8 bg-background">
+<div class="max-w-7xl mx-auto flex flex-col gap-6">
+<!-- Breadcrumb & Page Header -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline mb-1">
+<span>Recursos Humanos</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Gestión de Personal Interno</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-secondary font-semibold">Alta de Operador</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Registrar Nuevo Empleado</h1>
+<p class="text-body-md font-body-md text-outline">Creación de credenciales y asignación de perfil institucional - Rueda Vargas S.A.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container text-on-secondary-container text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Servidor SRI: Conectado</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- ==================== LEFT COLUMN: FORM CARD ==================== -->
+<div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 lg:p-8 shadow-sm">
+<form class="flex flex-col gap-6" id="employeeForm" onsubmit="event.preventDefault();">
+<!-- Section 1: Datos Personales e Identidad -->
+<div>
+<div class="flex items-center gap-2 pb-3 mb-4 border-b border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary text-[20px]">badge</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Información Básica del Colaborador</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Nombres completos -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Nombres completos <span class="text-error">*</span></label>
+<input class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="Ej. Juan Andrés" type="text" value="Carlos Vicente">
+</div>
+<!-- Apellidos completos -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Apellidos completos <span class="text-error">*</span></label>
+<input class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="Ej. Pérez Silva" type="text" value="Mendoza Zambrano">
+</div>
+<!-- Cédula de Identidad / RUC (Ecuador) -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Cédula de Identidad / RUC (Ecuador) <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" maxlength="13" placeholder="10 dígitos o RUC 13 dígitos" type="text" value="0928471920">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-tertiary-fixed-dim">verified</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Validado con padrón nacional Registro Civil</span>
+</div>
+<!-- Teléfono de contacto -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Teléfono de contacto (+593 ...) <span class="text-error">*</span></label>
+<div class="relative">
+<span class="absolute left-3 top-2.5 text-label-md font-label-md text-outline">+593</span>
+<input class="w-full h-10 pl-14 pr-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="9X XXX XXXX" type="tel" value="98 421 9903">
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Asignación Operacional & Institucional -->
+<div>
+<div class="flex items-center gap-2 pb-3 mb-4 border-b border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary text-[20px]">corporate_fare</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Perfil Institucional &amp; Acceso</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Correo Electrónico Institucional -->
+<div class="sm:col-span-2 flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Correo Electrónico Institucional (@ruedavargas.com) <span class="text-error">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">mail</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" id="emailInput" placeholder="nombre.apellido@ruedavargas.com" type="email" value="cmendoza@ruedavargas.com">
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-label-sm font-label-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>El correo debe tener dominio corporativo (@ruedavargas.com) - Dominio válido</span>
+</div>
+</div>
+<!-- Rol a Asignar -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Rol a asignar <span class="text-error">*</span></label>
+<select class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary">
+<option value="">Seleccione un rol...</option>
+<option value="admin">Administrador General</option>
+<option value="cajero">Cajero / Ventas Mostrador</option>
+<option selected="" value="gestor">Gestor de Cuentas Corporativas</option>
+<option value="bodega">Jefe de Bodega</option>
+</select>
+</div>
+<!-- Sucursal / Bodega -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Sucursal / Bodega <span class="text-error">*</span></label>
+<select class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary">
+<option value="">Seleccione una ubicación...</option>
+<option value="gye">Matriz Guayaquil</option>
+<option selected="" value="mch">Sucursal Machala</option>
+<option value="drn">Centro Logístico Durán</option>
+<option value="ste">Agencia Santa Elena</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Section 3: Credenciales de Acceso y Validaciones -->
+<div>
+<div class="flex items-center gap-2 pb-3 mb-4 border-b border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary text-[20px]">lock_reset</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Credenciales de Acceso</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Contraseña Temporal -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Contraseña temporal <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-10 px-3 pr-10 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" id="pwdInput" placeholder="••••••••••••" type="password" value="Rueda2024Secure!">
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('pwdInput', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- Indicador de Seguridad -->
+<div class="mt-1 flex flex-col gap-1">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-outline">Seguridad:</span>
+<span class="text-on-tertiary-container font-semibold">Excelente (100%)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden flex gap-0.5">
+<div class="h-full bg-tertiary-fixed-dim w-1/4"></div>
+<div class="h-full bg-tertiary-fixed-dim w-1/4"></div>
+<div class="h-full bg-tertiary-fixed-dim w-1/4"></div>
+<div class="h-full bg-tertiary-fixed-dim w-1/4"></div>
+</div>
+</div>
+</div>
+<!-- Confirmación de Contraseña -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface">Confirmación de contraseña <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-10 px-3 pr-10 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" id="pwdConfirm" placeholder="••••••••••••" type="password" value="Rueda2024Secure!">
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('pwdConfirm', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- Mensaje de Validación en tiempo real -->
+<div class="flex items-center gap-1.5 mt-1.5 text-label-sm font-label-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span id="matchMsg">Las contraseñas coinciden correctamente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Políticas y Privilegios -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/60 flex flex-col gap-3">
+<label class="flex items-start gap-3 cursor-pointer">
+<input checked="" class="mt-0.5 rounded text-secondary focus:ring-secondary w-4 h-4 border-outline-variant" type="checkbox">
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-medium text-on-surface">Requerir cambio de contraseña en el primer inicio de sesión</span>
+<span class="text-label-sm font-label-sm text-outline">Fuerza al usuario a crear una clave propia tras la autenticación inicial.</span>
+</div>
+</label>
+<div class="h-px bg-outline-variant/40"></div>
+<label class="flex items-start gap-3 cursor-pointer">
+<input checked="" class="mt-0.5 rounded text-secondary focus:ring-secondary w-4 h-4 border-outline-variant" type="checkbox">
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-medium text-on-surface">Permisos de facturación SRI</span>
+<span class="text-label-sm font-label-sm text-outline">Habilita firma electrónica de notas de entrega y emisión de facturas electrónicas.</span>
+</div>
+</label>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 border-t border-outline-variant/60 flex flex-col sm:flex-row items-center justify-end gap-3">
+<button class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-label-md font-label-md hover:bg-surface-container-low transition-colors" type="button">
+                  Cancelar
+                </button>
+<button class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-secondary text-on-secondary text-label-md font-label-md hover:bg-on-secondary-container transition-all flex items-center justify-center gap-2 shadow-sm" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Guardar y Enviar Credenciales</span>
+</button>
+</div>
+</form>
+</div>
+<!-- ==================== RIGHT COLUMN ==================== -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- KPI Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">TOTAL PERSONAL ACTIVO</span>
+<span class="material-symbols-outlined text-secondary text-[22px]">badge</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg font-bold text-on-surface">42</span>
+<span class="text-label-sm font-label-sm text-on-tertiary-container bg-tertiary-fixed/40 px-2 py-0.5 rounded-full font-medium">+3 este mes</span>
+</div>
+<p class="mt-2 text-body-sm font-body-sm text-outline">Distribuidos en las sedes operativas de Rueda Vargas S.A.</p>
+</div>
+<!-- Mini-Tabla -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="px-5 py-4 border-b border-outline-variant flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">history</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface text-sm">Últimos 3 empleados registrados</h3>
+</div>
+<a class="text-label-sm font-label-sm text-secondary hover:underline" href="#">Ver todos</a>
+</div>
+<!-- List Elements -->
+<div class="divide-y divide-outline-variant/60">
+<!-- Empleado 1 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCarnszAVa9ylpwPBgjmvrLZeh__Bd3ndBgS1Yj1ff-xwD7KDepKzyeyXFmo4gTL9y4yvhLo_S0CrjyOXBpFXLVTspW4gdyz5BDWdZSG8iBwUht4xAfQ1VrLyVttNVdkuOKouXyEEKJPFRKA4tLaF-fQp8VEAogxKEpBY9aATWNappEz6DQ8JbzIpnWrlxKIzpFgNsdXY4lD6rEU_irgOkttBjVtwBKr1oD3_grCOemlThNG3wUiBe98A">
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Esteban Narváez</span>
+<span class="text-label-sm font-label-sm text-outline">Jefe de Bodega • Durán</span>
+<span class="text-label-sm font-label-sm text-outline mt-0.5">enarvaez@ruedavargas.com</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                      Activo
+                    </span>
+<span class="text-label-sm font-label-sm text-outline text-[10px]">Ayer, 16:40</span>
+</div>
+</div>
+<!-- Empleado 2 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjj8YN-DX91j4sBUCww9WRzcPH5p-mvjtc5own_zLEfCp90c5l4o5SH9RssvTd2x1BntqkmuTMWLctqI0brz0kRzDGkBY_hQFJ7aGvJFSytu1863osaBaNgopJEFTEqB0aQADIENa8nILS_oQsToxDc7ZRD-QvFB25lA_YVH9eB8uEntKij9HGEimbZnAOesT9ubBcB_-lOjfXo787hG0NTEgWOchfnheMBzxECLpQkLcTptr3hQCQQg">
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Valeria Castro</span>
+<span class="text-label-sm font-label-sm text-outline">Gestor de Cuentas • Machala</span>
+<span class="text-label-sm font-label-sm text-outline mt-0.5">vcastro@ruedavargas.com</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                      Activo
+                    </span>
+<span class="text-label-sm font-label-sm text-outline text-[10px]">12 Mar, 09:15</span>
+</div>
+</div>
+<!-- Empleado 3 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV0SPFPSUwvFYLtHoIVkGlp1WSPcS69nTrQj8Gd26J9lpaoPVkk7YBnPG0xUi-HiezxQt6Fhs6QHalgzP4aB_mzPUlMYzoxZwcXtZ6xJdZCuh97QVGXNBnFFE1re_LSka46NftjVHyMnJt2TmjrjCBJX2wPQGo_wUq_NTFbEeOnVhuggy5ETtzS8tdWficaQP-10IdvT6A5A7z8jZvPULvSU7cFHInbEojW-qivh3Cb_rjExpYPwv0oQ">
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-semibold text-on-surface leading-tight">David Alarcón</span>
+<span class="text-label-sm font-label-sm text-outline">Cajero Mostrador • Guayaquil</span>
+<span class="text-label-sm font-label-sm text-outline mt-0.5">dalarcon@ruedavargas.com</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                      Activo
+                    </span>
+<span class="text-label-sm font-label-sm text-outline text-[10px]">10 Mar, 11:20</span>
+</div>
+</div>
+</div>
+<!-- Quick Audit Footer -->
+<div class="p-3 bg-surface-container-low border-t border-outline-variant text-center">
+<span class="text-label-sm font-label-sm text-outline">Auditoría automática respaldada por firma digital SRI</span>
+</div>
+</div>
+<!-- Operational Tip Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px] shrink-0 mt-0.5">security_update_good</span>
+<div>
+<h4 class="text-label-md font-label-md font-bold text-on-surface">Protocolo de Ciberseguridad</h4>
+<p class="text-body-sm font-body-sm text-outline mt-1 leading-relaxed">
+                  Las credenciales de acceso provisional expiran en 48 horas tras su envío al correo corporativo. El colaborador deberá validar su código OTP en su primer inicio.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Inline Logic -->
+<script>
+    function togglePassVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+
+    const pwd = document.getElementById('pwdInput');
+    const pwdConfirm = document.getElementById('pwdConfirm');
+    const matchMsg = document.getElementById('matchMsg');
+
+    function checkPasswords() {
+      if (pwd.value && pwdConfirm.value) {
+        if (pwd.value === pwdConfirm.value) {
+          matchMsg.textContent = 'Las contraseñas coinciden correctamente';
+          matchMsg.parentElement.className = 'flex items-center gap-1.5 mt-1.5 text-label-sm font-label-sm text-on-tertiary-container';
+          matchMsg.previousElementSibling.textContent = 'task_alt';
+        } else {
+          matchMsg.textContent = 'Las contraseñas no coinciden';
+          matchMsg.parentElement.className = 'flex items-center gap-1.5 mt-1.5 text-label-sm font-label-sm text-error';
+          matchMsg.previousElementSibling.textContent = 'error';
+        }
+      }
+    }
+
+    pwd.addEventListener('input', checkPasswords);
+    pwdConfirm.addEventListener('input', checkPasswords);
+  </script>
+</body></html>

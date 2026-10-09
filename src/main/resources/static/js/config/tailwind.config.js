@@ -1,0 +1,108 @@
+/**
+ * Configuración oficial de Tailwind CSS para Rueda Vargas ERP (Exportado de Google Stitch).
+ */
+tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+            colors: {
+                'surface': '#f8f9fb',
+                'surface-dim': '#d8dadc',
+                'surface-bright': '#f8f9fb',
+                'surface-container-lowest': '#ffffff',
+                'surface-container-low': '#f2f4f6',
+                'surface-container': '#eceef0',
+                'surface-container-high': '#e6e8ea',
+                'surface-container-highest': '#e0e3e5',
+                'on-surface': '#191c1e',
+                'on-surface-variant': '#594238',
+                'inverse-surface': '#2d3133',
+                'inverse-on-surface': '#eff1f3',
+                'outline': '#8c7166',
+                'outline-variant': '#e0c0b2',
+                'surface-tint': '#a23f00',
+                'primary': '#9e3d00',
+                'on-primary': '#ffffff',
+                'primary-container': '#c64f00',
+                'on-primary-container': '#fffbff',
+                'inverse-primary': '#ffb595',
+                'secondary': '#49607e',
+                'on-secondary': '#ffffff',
+                'secondary-container': '#c4dcff',
+                'on-secondary-container': '#49617f',
+                'tertiary': '#006767',
+                'on-tertiary': '#ffffff',
+                'tertiary-container': '#078282',
+                'on-tertiary-container': '#f3fffe',
+                'error': '#ba1a1a',
+                'on-error': '#ffffff',
+                'error-container': '#ffdad6',
+                'on-error-container': '#93000a',
+                'primary-fixed': '#ffdbcd',
+                'primary-fixed-dim': '#ffb595',
+                'on-primary-fixed': '#351000',
+                'on-primary-fixed-variant': '#7c2e00',
+                'secondary-fixed': '#d2e4ff',
+                'secondary-fixed-dim': '#b0c8eb',
+                'on-secondary-fixed': '#001c37',
+                'on-secondary-fixed-variant': '#314865',
+                'tertiary-fixed': '#93f2f2',
+                'tertiary-fixed-dim': '#76d6d5',
+                'on-tertiary-fixed': '#002020',
+                'on-tertiary-fixed-variant': '#004f4f',
+                'background': '#f8f9fb',
+                'on-background': '#191c1e',
+                'surface-variant': '#e0e3e5'
+            },
+            borderRadius: {
+                DEFAULT: '0.25rem',
+                sm: '0.125rem',
+                md: '0.375rem',
+                lg: '0.5rem',
+                xl: '0.75rem',
+                full: '9999px'
+            },
+            spacing: {
+                'space-xs': '0.25rem',
+                'space-sm': '0.5rem',
+                'space-md': '1rem',
+                'space-lg': '1.5rem',
+                'space-xl': '2.5rem',
+                'gutter': '1.5rem',
+                'margin': '2rem'
+            },
+            fontFamily: {
+                sans: ['Plus Jakarta Sans', 'sans-serif'],
+                display: ['Plus Jakarta Sans', 'sans-serif'],
+                headline: ['Plus Jakarta Sans', 'sans-serif'],
+                body: ['Plus Jakarta Sans', 'sans-serif'],
+                label: ['Plus Jakarta Sans', 'sans-serif'],
+                'headline-lg': ['Plus Jakarta Sans', 'sans-serif'],
+                'headline-md': ['Plus Jakarta Sans', 'sans-serif'],
+                'headline-sm': ['Plus Jakarta Sans', 'sans-serif'],
+                'headline-lg-mobile': ['Plus Jakarta Sans', 'sans-serif'],
+                'body-lg': ['Plus Jakarta Sans', 'sans-serif'],
+                'body-md': ['Plus Jakarta Sans', 'sans-serif'],
+                'body-sm': ['Plus Jakarta Sans', 'sans-serif'],
+                'label-lg': ['Plus Jakarta Sans', 'sans-serif'],
+                'label-md': ['Plus Jakarta Sans', 'sans-serif'],
+                'label-sm': ['Plus Jakarta Sans', 'sans-serif'],
+                'title-kpi': ['Plus Jakarta Sans', 'sans-serif']
+            },
+            fontSize: {
+                'title-kpi': ['28px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '700' }],
+                'headline-lg': ['32px', { lineHeight: '40px', fontWeight: '700' }],
+                'headline-lg-mobile': ['24px', { lineHeight: '32px', fontWeight: '700' }],
+                'headline-md': ['24px', { lineHeight: '32px', fontWeight: '600' }],
+                'headline-sm': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+                'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+                'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+                'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+                'label-lg': ['14px', { lineHeight: '20px', fontWeight: '500' }],
+                'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+                'label-sm': ['10px', { lineHeight: '14px', fontWeight: '500' }],
+                'display': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }]
+            }
+        }
+    }
+};

@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: ruedavargas-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ruedavargas_db
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U postgres -d ruedavargas_db]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ruedavargas-erp-api
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ruedavargas_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      JWT_SECRET: super-secret-jwt-key-change-me-in-production-which-has-more-than-32-bytes
+      JWT_EXPIRATION_MS: 28800000
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

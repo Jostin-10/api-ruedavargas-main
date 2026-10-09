@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Rueda Vargas S.A. — ERP Operativo</title>
+    <script type="module">
+        import { ROUTES, isAuthenticated } from '/js/utils/session.js';
+        window.location.replace(isAuthenticated() ? ROUTES.dashboard : ROUTES.login);
+    </script>
+</head>
+<body style="background: #f8f9fb; color: #191c1e; font-family: sans-serif;">
+    <p style="padding: 2rem; text-align: center;">Cargando Rueda Vargas ERP…</p>
+</body>
+</html>

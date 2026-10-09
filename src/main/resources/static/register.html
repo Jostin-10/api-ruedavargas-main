@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="h-full" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Registro de Personal | Rueda Vargas S.A. - ERP</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Tailwind CSS v3 with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="/js/config/tailwind.config.js"></script>
+</head>
+<body class="h-full bg-background text-on-surface font-body-md text-body-md antialiased flex flex-col">
+<div class="flex h-screen overflow-hidden">
+    <!-- SideNavBar Anchor -->
+    <aside class="flex flex-col justify-between h-full w-64 p-4 border-r border-outline-variant fixed left-0 top-0 z-40 bg-primary-container shadow-sm">
+        <div class="flex flex-col gap-6">
+            <!-- Brand Header -->
+            <div class="flex items-center gap-3 px-2 pt-2">
+                <div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-sm text-primary">
+                    <span class="material-symbols-outlined text-[24px]">water_drop</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-headline-sm font-headline-sm font-bold text-on-primary tracking-tight">Rueda Vargas</span>
+                    <span class="text-label-sm font-label-sm text-secondary-container tracking-wider uppercase">ERP Talento Humano</span>
+                </div>
+            </div>
+
+            <!-- Quick Action CTA -->
+            <a href="/dashboard.html" class="w-full bg-secondary hover:bg-on-secondary-container text-on-secondary py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 font-headline-sm text-headline-sm shadow-sm transition-all active:scale-95 text-center">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>Ir al Dashboard</span>
+            </a>
+
+            <!-- Navigation Tabs -->
+            <nav class="flex flex-col gap-1.5">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="/dashboard.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-label-md font-label-md">Panel General</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="/dashboard.html?tab=cajero">
+                    <span class="material-symbols-outlined">point_of_sale</span>
+                    <span class="text-label-md font-label-md">Ventas &amp; Despachos</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-tint text-on-primary font-semibold border-l-4 border-secondary-container transition-all" href="/register.html">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+                    <span class="text-label-md font-label-md">Clientes &amp; Personal</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="/dashboard.html?tab=gestor">
+                    <span class="material-symbols-outlined">waves</span>
+                    <span class="text-label-md font-label-md">Camaroneras</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex flex-col gap-1 pt-4 border-t border-outline-variant/30">
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:bg-surface-tint/30 hover:text-on-primary transition-colors" href="/login.html">
+                <span class="material-symbols-outlined text-[18px]">login</span>
+                <span class="text-label-md font-label-md">Iniciar Sesión</span>
+            </a>
+            <div class="mt-2 px-3 py-2 bg-primary/40 rounded-lg flex items-center justify-between text-on-primary-container">
+                <span class="text-label-sm font-label-sm">Rueda Vargas v4.8</span>
+                <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 ml-64 flex flex-col h-full overflow-hidden">
+        <!-- TopNavBar -->
+        <header class="flex items-center justify-between w-full h-16 px-6 bg-surface-container-lowest border-b border-outline-variant shrink-0 z-30">
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-headline-sm font-headline-sm font-bold text-primary">ERP Rueda Vargas</span>
+                    <span class="text-label-sm font-label-sm px-2 py-0.5 bg-surface-container text-on-secondary-container rounded-full">Talento Humano</span>
+                </div>
+            </div>
+
+            <!-- Right Profile/Actions -->
+            <div class="flex items-center gap-3">
+                <a href="/login.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Volver al Login</span>
+                </a>
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container text-on-secondary-container text-label-md font-label-md">
+                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    <span>Directorio Activo SRI</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Workspace Canvas -->
+        <main class="flex-1 overflow-y-auto p-6 lg:p-8 bg-background custom-scrollbar">
+            <div class="max-w-7xl mx-auto flex flex-col gap-6">
+                <!-- Breadcrumb & Header -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 text-label-sm font-label-sm text-outline mb-1">
+                            <span>Recursos Humanos</span>
+                            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+                            <span>Gestión de Personal Interno</span>
+                            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+                            <span class="text-secondary font-semibold">Alta de Operador</span>
+                        </div>
+                        <h1 class="text-headline-lg font-headline-lg text-on-surface">Registrar Nuevo Empleado</h1>
+                        <p class="text-body-md font-body-md text-outline">Creación de credenciales y asignación de perfil institucional - Rueda Vargas S.A.</p>
+                    </div>
+                </div>
+
+                <!-- Alert Messages -->
+                <div id="alertSuccess" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-medium">
+                        <span class="material-symbols-outlined text-emerald-600">check_circle</span>
+                        <span id="alertSuccessMsg">Empleado registrado exitosamente en el ERP Rueda Vargas S.A.</span>
+                    </div>
+                    <a href="/login.html" class="text-sm font-bold underline hover:text-emerald-900">Ir a Iniciar Sesión</a>
+                </div>
+
+                <div id="alertError" class="hidden p-4 rounded-xl bg-error-container/40 border border-error/30 text-on-error-container flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-medium">
+                        <span class="material-symbols-outlined text-error">error</span>
+                        <span id="alertErrorMsg">Hubo un error al registrar el empleado.</span>
+                    </div>
+                    <button type="button" onclick="document.getElementById('alertError').classList.add('hidden')">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- LEFT COLUMN: FORM CARD -->
+                    <div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 lg:p-8 shadow-sm">
+                        <form class="flex flex-col gap-6" id="employeeForm">
+                            <!-- Section 1: Datos Personales -->
+                            <div>
+                                <div class="flex items-center gap-2 pb-3 mb-4 border-b border-outline-variant/60">
+                                    <span class="material-symbols-outlined text-secondary text-[20px]">badge</span>
+                                    <h2 class="text-headline-sm font-headline-sm text-on-surface">Información Básica del Colaborador</h2>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Nombres completos <span class="text-error">*</span></label>
+                                        <input id="firstName" class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="Ej. Carlos Vicente" required type="text" value="Carlos Vicente">
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Apellidos completos <span class="text-error">*</span></label>
+                                        <input id="lastName" class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="Ej. Mendoza Zambrano" required type="text" value="Mendoza Zambrano">
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Cédula de Identidad / RUC / ID Empleado <span class="text-error">*</span></label>
+                                        <div class="relative">
+                                            <input id="employeeId" class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" maxlength="13" placeholder="10 dígitos o RUC" required type="text" value="0928471920">
+                                            <span class="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-tertiary-fixed-dim">verified</span>
+                                        </div>
+                                        <span class="text-label-sm font-label-sm text-outline">Código institucional / Padrón nacional</span>
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Teléfono de contacto (+593 ...) <span class="text-error">*</span></label>
+                                        <div class="relative">
+                                            <span class="absolute left-3 top-2.5 text-label-md font-label-md text-outline">+593</span>
+                                            <input id="phone" class="w-full h-10 pl-14 pr-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="984219903" required type="tel" value="984219903">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 2: Asignación Operacional -->
+                            <div>
+                                <div class="flex items-center gap-2 pb-3 mb-4 border-b border-outline-variant/60">
+                                    <span class="material-symbols-outlined text-secondary text-[20px]">corporate_fare</span>
+                                    <h2 class="text-headline-sm font-headline-sm text-on-surface">Perfil Institucional &amp; Acceso</h2>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="sm:col-span-2 flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Correo Electrónico Institucional (@ruedavargas.ec) <span class="text-error">*</span></label>
+                                        <div class="relative">
+                                            <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">mail</span>
+                                            <input id="email" class="w-full h-10 pl-9 pr-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="cmendoza@ruedavargas.ec" required type="email" value="cmendoza@ruedavargas.ec">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Rol a asignar <span class="text-error">*</span></label>
+                                        <select id="role" class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary">
+                                            <option value="ADMIN">Administrador General</option>
+                                            <option value="CAJERO">Cajero / Ventas Mostrador</option>
+                                            <option value="GESTOR_CLIENTES" selected>Gestor de Cuentas Camaroneras</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Sucursal / Bodega <span class="text-error">*</span></label>
+                                        <select id="branch" class="h-10 px-3 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary">
+                                            <option value="gye">Matriz Guayaquil</option>
+                                            <option value="mch" selected>Sucursal Machala</option>
+                                            <option value="drn">Centro Logístico Durán</option>
+                                            <option value="ste">Agencia Santa Elena</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 3: Credenciales -->
+                            <div>
+                                <div class="flex items-center gap-2 pb-3 mb-4 border-b border-outline-variant/60">
+                                    <span class="material-symbols-outlined text-secondary text-[20px]">lock_reset</span>
+                                    <h2 class="text-headline-sm font-headline-sm text-on-surface">Credenciales de Acceso</h2>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Contraseña temporal <span class="text-error">*</span></label>
+                                        <div class="relative">
+                                            <input id="pwdInput" class="w-full h-10 px-3 pr-10 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="••••••••••••" required type="password" value="Password123">
+                                            <button type="button" class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePass('pwdInput', this)">
+                                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-label-md font-label-md text-on-surface">Confirmación de contraseña <span class="text-error">*</span></label>
+                                        <div class="relative">
+                                            <input id="pwdConfirm" class="w-full h-10 px-3 pr-10 rounded-lg border border-outline-variant bg-surface-bright text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" placeholder="••••••••••••" required type="password" value="Password123">
+                                            <button type="button" class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePass('pwdConfirm', this)">
+                                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 mt-1 text-label-sm font-label-sm text-on-tertiary-container" id="matchContainer">
+                                            <span class="material-symbols-outlined text-[16px]">task_alt</span>
+                                            <span id="matchMsg">Las contraseñas coinciden correctamente</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 4: Políticas -->
+                            <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/60 flex flex-col gap-3">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input checked class="mt-0.5 rounded text-secondary focus:ring-secondary w-4 h-4 border-outline-variant" type="checkbox">
+                                    <div class="flex flex-col">
+                                        <span class="text-body-md font-body-md font-medium text-on-surface">Requerir cambio de contraseña en el primer inicio de sesión</span>
+                                        <span class="text-label-sm font-label-sm text-outline">Fuerza al usuario a crear una clave propia tras la autenticación inicial.</span>
+                                    </div>
+                                </label>
+                                <div class="h-px bg-outline-variant/40"></div>
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input checked class="mt-0.5 rounded text-secondary focus:ring-secondary w-4 h-4 border-outline-variant" type="checkbox">
+                                    <div class="flex flex-col">
+                                        <span class="text-body-md font-body-md font-medium text-on-surface">Permisos de facturación SRI</span>
+                                        <span class="text-label-sm font-label-sm text-outline">Habilita firma electrónica de notas de entrega y emisión de facturas electrónicas.</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="pt-4 border-t border-outline-variant/60 flex flex-col sm:flex-row items-center justify-end gap-3">
+                                <a href="/login.html" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-label-md font-label-md hover:bg-surface-container-low transition-colors text-center">
+                                    Cancelar
+                                </a>
+                                <button id="submitRegisterBtn" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-secondary text-on-secondary text-label-md font-label-md hover:bg-on-secondary-container transition-all flex items-center justify-center gap-2 shadow-sm font-semibold" type="submit">
+                                    <span class="material-symbols-outlined text-[18px]">send</span>
+                                    <span>Guardar y Enviar Credenciales</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- RIGHT COLUMN: METRICS & RECENT -->
+                    <div class="lg:col-span-4 flex flex-col gap-6">
+                        <!-- KPI Card -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-label-sm font-label-sm text-outline uppercase font-semibold">TOTAL PERSONAL ACTIVO</span>
+                                <span class="material-symbols-outlined text-secondary text-[22px]">badge</span>
+                            </div>
+                            <div class="mt-3 flex items-baseline gap-2">
+                                <span class="text-headline-lg font-headline-lg font-bold text-on-surface">42</span>
+                                <span class="text-label-sm font-label-sm text-on-tertiary-container bg-tertiary-fixed/40 px-2 py-0.5 rounded-full font-medium">+3 este mes</span>
+                            </div>
+                            <p class="mt-2 text-body-sm font-body-sm text-outline">Distribuidos en las sedes operativas de Rueda Vargas S.A.</p>
+                        </div>
+
+                        <!-- Mini-Tabla -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+                            <div class="px-5 py-4 border-b border-outline-variant flex items-center justify-between bg-surface-bright">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary text-[18px]">history</span>
+                                    <h3 class="text-headline-sm font-headline-sm text-on-surface text-sm">Últimos colaboradores registrados</h3>
+                                </div>
+                            </div>
+                            <div class="divide-y divide-outline-variant/60">
+                                <div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-sm">EN</div>
+                                        <div class="flex flex-col">
+                                            <span class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Esteban Narváez</span>
+                                            <span class="text-label-sm font-label-sm text-outline">Jefe de Bodega • Durán</span>
+                                            <span class="text-label-sm font-label-sm text-outline mt-0.5">enarvaez@ruedavargas.ec</span>
+                                        </div>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] font-medium">Activo</span>
+                                </div>
+                                <div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm">VC</div>
+                                        <div class="flex flex-col">
+                                            <span class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Valeria Castro</span>
+                                            <span class="text-label-sm font-label-sm text-outline">Gestor de Cuentas • Machala</span>
+                                            <span class="text-label-sm font-label-sm text-outline mt-0.5">vcastro@ruedavargas.ec</span>
+                                        </div>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] font-medium">Activo</span>
+                                </div>
+                                <div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-sm">DA</div>
+                                        <div class="flex flex-col">
+                                            <span class="text-body-md font-body-md font-semibold text-on-surface leading-tight">David Alarcón</span>
+                                            <span class="text-label-sm font-label-sm text-outline">Cajero Mostrador • Guayaquil</span>
+                                            <span class="text-label-sm font-label-sm text-outline mt-0.5">dalarcon@ruedavargas.ec</span>
+                                        </div>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] font-medium">Activo</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Protocolo Card -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary text-[24px] shrink-0 mt-0.5">security_update_good</span>
+                            <div>
+                                <h4 class="text-label-md font-label-md font-bold text-on-surface">Protocolo de Ciberseguridad</h4>
+                                <p class="text-body-sm font-body-sm text-outline mt-1 leading-relaxed">
+                                    Las credenciales de acceso provisional expiran en 48 horas tras su envío al correo corporativo. El colaborador deberá validar su código OTP en su primer inicio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script type="module">
+    import { authService } from '/js/services/auth.service.js';
+
+    window.togglePass = function(id, btn) {
+        const input = document.getElementById(id);
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            icon.textContent = 'visibility';
+        }
+    };
+
+    const pwd = document.getElementById('pwdInput');
+    const pwdConfirm = document.getElementById('pwdConfirm');
+    const matchMsg = document.getElementById('matchMsg');
+    const matchContainer = document.getElementById('matchContainer');
+
+    function checkPasswords() {
+        if (pwd.value && pwdConfirm.value) {
+            if (pwd.value === pwdConfirm.value) {
+                matchMsg.textContent = 'Las contraseñas coinciden correctamente';
+                matchContainer.className = 'flex items-center gap-1.5 mt-1 text-label-sm font-label-sm text-on-tertiary-container';
+                matchContainer.querySelector('.material-symbols-outlined').textContent = 'task_alt';
+            } else {
+                matchMsg.textContent = 'Las contraseñas no coinciden';
+                matchContainer.className = 'flex items-center gap-1.5 mt-1 text-label-sm font-label-sm text-error';
+                matchContainer.querySelector('.material-symbols-outlined').textContent = 'error';
+            }
+        }
+    }
+
+    pwd.addEventListener('input', checkPasswords);
+    pwdConfirm.addEventListener('input', checkPasswords);
+
+    const form = document.getElementById('employeeForm');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const successBox = document.getElementById('alertSuccess');
+        const errorBox = document.getElementById('alertError');
+        const submitBtn = document.getElementById('submitRegisterBtn');
+        successBox.classList.add('hidden');
+        errorBox.classList.add('hidden');
+
+        if (pwd.value !== pwdConfirm.value) {
+            errorBox.classList.remove('hidden');
+            document.getElementById('alertErrorMsg').textContent = 'Las contraseñas no coinciden.';
+            return;
+        }
+
+        const fullName = `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`;
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const employeeId = document.getElementById('employeeId').value.trim();
+        const role = document.getElementById('role').value;
+        const password = pwd.value;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <span class="inline-block animate-spin material-symbols-outlined text-[18px]">progress_activity</span>
+            <span>Registrando en base de datos...</span>
+        `;
+
+        try {
+            await authService.register({
+                name: fullName,
+                email: email,
+                phone: phone.startsWith('+593') ? phone : `+593 ${phone}`,
+                employeeId: employeeId,
+                role: role,
+                password: password
+            });
+
+            successBox.classList.remove('hidden');
+            document.getElementById('alertSuccessMsg').textContent = `¡Empleado ${fullName} registrado con éxito con rol ${role}! Puede iniciar sesión ahora.`;
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `
+                <span class="material-symbols-outlined text-[18px]">send</span>
+                <span>Guardar y Enviar Credenciales</span>
+            `;
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `
+                <span class="material-symbols-outlined text-[18px]">send</span>
+                <span>Guardar y Enviar Credenciales</span>
+            `;
+            errorBox.classList.remove('hidden');
+            document.getElementById('alertErrorMsg').textContent = err.message || 'Error al registrar colaborador.';
+        }
+    });
+</script>
+</body>
+</html>

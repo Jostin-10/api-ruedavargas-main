@@ -1,0 +1,697 @@
+<!DOCTYPE html><html class="h-full bg-background" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ERP Rueda Vargas - Clientes &amp; Camaroneras</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface": "#191c1e",
+          "primary-fixed": "#ffdbcd",
+          "on-secondary-fixed": "#001c37",
+          "surface-container-highest": "#e0e3e5",
+          "surface-container-lowest": "#ffffff",
+          "inverse-primary": "#ffb595",
+          "surface-container-low": "#f2f4f6",
+          "primary-container": "#c64f00",
+          "on-primary-fixed-variant": "#7c2e00",
+          "tertiary-fixed": "#93f2f2",
+          "surface-container-high": "#e6e8ea",
+          "on-tertiary-container": "#f3fffe",
+          "secondary": "#49607e",
+          "outline-variant": "#e0c0b2",
+          "surface-tint": "#a23f00",
+          "on-primary-container": "#fffbff",
+          "outline": "#8c7166",
+          "tertiary": "#006767",
+          "surface": "#f8f9fb",
+          "secondary-container": "#c4dcff",
+          "surface-bright": "#f8f9fb",
+          "surface-variant": "#e0e3e5",
+          "surface-container": "#eceef0",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#76d6d5",
+          "on-secondary": "#ffffff",
+          "primary": "#9e3d00",
+          "background": "#f8f9fb",
+          "on-tertiary": "#ffffff",
+          "on-primary-fixed": "#351000",
+          "on-surface-variant": "#594238",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#ffb595",
+          "error": "#ba1a1a",
+          "on-primary": "#ffffff",
+          "tertiary-container": "#078282",
+          "on-error-container": "#93000a",
+          "on-background": "#191c1e",
+          "on-secondary-container": "#49617f",
+          "secondary-fixed": "#d2e4ff",
+          "inverse-surface": "#2d3133",
+          "on-tertiary-fixed": "#002020",
+          "surface-dim": "#d8dadc",
+          "on-tertiary-fixed-variant": "#004f4f",
+          "on-secondary-fixed-variant": "#314865",
+          "secondary-fixed-dim": "#b0c8eb",
+          "inverse-on-surface": "#eff1f3"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "2rem"
+        },
+        "fontFamily": {
+          "label-sm": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-lg-mobile": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+          "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+          "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+          "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+          "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    .elevation-card {
+      box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+    }
+    .elevation-modal {
+      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body class="h-full bg-background text-on-surface antialiased overflow-x-hidden">
+<!-- ======================================================== -->
+<!-- 1. SIDE NAVIGATION (Shared Component: SideNavBar)       -->
+<!-- ======================================================== -->
+<aside class="flex flex-col justify-between h-full w-64 p-4 border-r border-outline-variant dark:border-outline fixed left-0 top-0 z-40 bg-primary-container dark:bg-primary shadow-sm dark:shadow-none">
+<div class="flex flex-col gap-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2 pt-1 pb-2">
+<div class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-on-secondary" style="font-size: 24px;">water_drop</span>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md font-bold text-on-primary dark:text-inverse-on-surface tracking-tight leading-none">Rueda Vargas</h1>
+<span class="text-label-sm font-label-sm text-on-primary-container tracking-wider">ERP Administrador</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<button class="w-full flex items-center justify-center gap-2 bg-secondary hover:bg-on-secondary-container text-on-primary py-2.5 px-4 rounded-xl text-label-md font-label-md font-semibold transition-all duration-150 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+        Nuevo Pedido
+      </button>
+<!-- Main Navigation Tabs -->
+<nav aria-label="Navegación Principal" class="flex flex-col gap-1.5">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container dark:text-surface-variant hover:text-on-primary hover:bg-surface-variant dark:hover:bg-inverse-surface hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-on-primary-container">dashboard</span>
+          Panel General
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container dark:text-surface-variant hover:text-on-primary hover:bg-surface-variant dark:hover:bg-inverse-surface hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-on-primary-container">inventory_2</span>
+          Inventario &amp; Balanceados
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container dark:text-surface-variant hover:text-on-primary hover:bg-surface-variant dark:hover:bg-inverse-surface hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-on-primary-container">point_of_sale</span>
+          Ventas &amp; Despachos
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-tint text-on-primary font-semibold border-l-4 border-secondary-container text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-on-primary">groups</span>
+          Clientes &amp; Camaroneras
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container dark:text-surface-variant hover:text-on-primary hover:bg-surface-variant dark:hover:bg-inverse-surface hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-on-primary-container">local_shipping</span>
+          Logística &amp; Lotes
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container dark:text-surface-variant hover:text-on-primary hover:bg-surface-variant dark:hover:bg-inverse-surface hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-on-primary-container">analytics</span>
+          Reportes ERP
+        </a>
+</nav>
+</div>
+<!-- Footer Utility Tabs -->
+<div class="border-t border-outline-variant/30 pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:text-on-primary text-label-md font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+        Configuración
+      </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:text-on-primary text-label-md font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+        Soporte Técnico
+      </a>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm flex items-center justify-center font-bold text-xs">
+          RV
+        </div>
+<div class="flex flex-col truncate">
+<span class="text-body-sm font-body-sm text-on-primary font-medium truncate">Carlos Mendoza V.</span>
+<span class="text-label-sm font-label-sm text-on-primary-container truncate">Ejecutivo de Cuentas</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ======================================================== -->
+<!-- 2. TOP APP BAR (Shared Component: TopNavBar)             -->
+<!-- ======================================================== -->
+<header class="flex items-center justify-between w-full h-16 px-6 ml-64 max-w-[calc(100%-16rem)] bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-30">
+<!-- Left Area: Brand Context & Search -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">ERP Rueda Vargas</span>
+<span class="text-outline-variant text-sm">/</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium">Gestión Comercial</span>
+</div>
+<!-- Search Input Container -->
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-lg">search</span>
+<input class="w-full h-10 pl-9 pr-4 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" placeholder="Buscar RUC, camaronera o lote..." type="text">
+</div>
+<!-- Global Navigation Quick Links -->
+<nav class="hidden xl:flex items-center gap-5 pl-2 text-label-md font-label-md">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Lotes Activos</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Stock Crítico</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Guías de Remisión</a>
+</nav>
+</div>
+<!-- Right Area: Actions & Avatar -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface border border-outline-variant rounded-xl text-on-surface hover:bg-surface-container-high transition-colors text-label-md font-label-md font-medium">
+<span class="material-symbols-outlined text-sm">download</span>
+        Descargar Balance
+      </button>
+<button class="flex items-center gap-1.5 px-3 py-2 bg-primary-container text-on-primary rounded-xl text-label-md font-label-md font-semibold hover:bg-primary transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">input</span>
+        Registrar Entrada
+      </button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<!-- Icon Actions -->
+<button aria-label="Notificaciones" class="w-9 h-9 flex items-center justify-center rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors relative">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button aria-label="Ayuda" class="w-9 h-9 flex items-center justify-center rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<!-- Profile Image -->
+<div class="flex items-center pl-2">
+<img alt="Profile" class="w-9 h-9 rounded-xl object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm0zYZ1lNlC5pm7KuHoIag-m419a6GJDvpjxyjyu44mZ735PjAdf-ZAJx1ouzSZUEBxV5gpBS8ctWgg3c9UdRbY0BHIO7NFF1mMiODsYFSQVgJ3UWQwEJ8-16IptCUiJeG6niIG4bFnQNAYjNOlKzQHqqMvmU1Vk0T3eCbFg0R3O63E1yFprsIhO4ovAVM05OxBL0vcbBX2Abz1LxNxSFoUppfXaxJA6AOLwm6r1zJ3Eqg4qfnE6WN9g">
+</div>
+</div>
+</header>
+<!-- ======================================================== -->
+<!-- 3. MAIN WORKSPACE / CONTENT CANVAS                       -->
+<!-- ======================================================== -->
+<main class="ml-64 p-6 space-y-6">
+<!-- KPI / Portfolio Header Section -->
+<section class="space-y-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Cartera de Clientes &amp; Camaroneras</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Monitoreo de cupos crediticios, despachos en ruta y relaciones comerciales del sector acuícola - Rueda Vargas S.A.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-secondary hover:bg-on-secondary-container text-on-primary px-4 py-2.5 rounded-xl font-label-md text-label-md font-semibold shadow-sm transition-all duration-150 active:scale-95" onclick="document.getElementById('modal-nueva-camaronera').classList.remove('hidden')">
+<span class="material-symbols-outlined text-lg">domain_add</span>
+            + Registrar Nueva Camaronera / Cliente Comercial
+          </button>
+</div>
+</div>
+<!-- 3 Metrics KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-5 elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline tracking-wider uppercase">Total Clientes Registrados</span>
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">water_voc</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">142 <span class="text-body-md font-body-md font-normal text-on-surface-variant">cuentas activas</span></div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Camaroneras productoras &amp; Distribuidores mayoristas</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-label-sm font-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+6 nuevas camaroneras incorporadas este ciclo</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-5 elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline tracking-wider uppercase">Línea de Crédito Otorgada</span>
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">$480,000.00 <span class="text-body-sm font-body-sm font-medium text-outline">USD</span></div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Cupo rotativo consolidado para insumos y nutrición</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Utilizado: <strong class="text-on-surface font-semibold">$312,450.00</strong></span>
+<span class="text-on-secondary font-semibold bg-secondary px-2 py-0.5 rounded-full text-xs">65.1% cupo</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-5 elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline tracking-wider uppercase">Despachos Pendientes</span>
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">12 <span class="text-body-md font-body-md font-normal text-on-surface-variant">órdenes en curso</span></div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Despachos programados hacia muelles y bodegas de finca</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-label-sm font-label-sm text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>4 órdenes con arribo fluvial estimado hoy</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Operational Split Layout -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<section class="col-span-12 xl:col-span-8 bg-surface-container-lowest border border-outline-variant/70 rounded-xl elevation-card overflow-hidden">
+<div class="p-4 border-b border-outline-variant/50 space-y-3">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="relative w-full sm:w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-base">filter_alt</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-secondary text-xs" placeholder="Filtrar por Razón Social o RUC..." type="text">
+</div>
+<div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
+<button class="px-3 py-1.5 rounded-xl bg-primary-container text-on-primary text-label-sm font-label-sm font-medium whitespace-nowrap">Todas las Zonas</button>
+<button class="px-3 py-1.5 rounded-xl bg-surface hover:bg-surface-container-high border border-outline-variant text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap transition-colors">Guayas - Taura</button>
+<button class="px-3 py-1.5 rounded-xl bg-surface hover:bg-surface-container-high border border-outline-variant text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap transition-colors">El Oro - Machala</button>
+<button class="px-3 py-1.5 rounded-xl bg-surface hover:bg-surface-container-high border border-outline-variant text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap transition-colors">Esmeraldas</button>
+<button class="px-3 py-1.5 rounded-xl bg-surface hover:bg-surface-container-high border border-outline-variant text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap transition-colors">Santa Elena</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant/60">
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold">Razón Social &amp; Zona</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold">RUC / ID</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold">Admin Campo</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold text-right">Hectáreas</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold text-right">Volumen Mes</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold text-center">Estado Cuenta</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-outline tracking-wider uppercase font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30 text-body-sm font-body-sm">
+<tr class="bg-surface-container-high/40 hover:bg-surface-container-high/70 transition-colors border-l-4 border-secondary cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="font-headline-sm text-on-surface font-semibold text-sm">Camaronera Río Guayas Cía. Ltda.</div>
+<div class="text-label-sm font-label-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">location_on</span> Guayas - Taura (Sector Isla Brava)
+</div>
+</td>
+<td class="py-3.5 px-4 font-code-table text-code-table text-on-surface-variant font-mono">0992384712001</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium text-xs">Ing. Galo Ronquillo</div>
+<div class="text-label-sm font-label-sm text-outline">+593 99 443 2190</div>
+</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table font-semibold text-on-surface">320 ha</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table text-on-surface">850 sacos</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#ECFDF5] text-[#065F46] border border-[#10B981]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Al día
+</span>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded text-secondary hover:bg-secondary/10 text-xs font-semibold">Ver Historial</button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface text-xs font-medium">Editar</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-headline-sm text-on-surface font-semibold text-sm">Camaronera Santa Priscila Lote 4</div>
+<div class="text-label-sm font-label-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">location_on</span> El Oro - Machala (Canal de Jambelí)
+</div>
+</td>
+<td class="py-3.5 px-4 font-code-table text-code-table text-on-surface-variant font-mono">0791458921001</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium text-xs">Mgs. Diana Serrano</div>
+<div class="text-label-sm font-label-sm text-outline">+593 98 712 0041</div>
+</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table font-semibold text-on-surface">540 ha</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table text-on-surface">1,400 sacos</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FFFBEB] text-[#92400E] border border-[#F59E0B]/30">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span> Crédito por vencer
+</span>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded text-secondary hover:bg-secondary/10 text-xs font-semibold">Ver Historial</button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface text-xs font-medium">Editar</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-headline-sm text-on-surface font-semibold text-sm">AgroMarina Balao S.A.</div>
+<div class="text-label-sm font-label-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">location_on</span> Guayas - Balao (Estero Hondo)
+</div>
+</td>
+<td class="py-3.5 px-4 font-code-table text-code-table text-on-surface-variant font-mono">0993019844001</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium text-xs">Lcdo. Xavier Loor</div>
+<div class="text-label-sm font-label-sm text-outline">+593 99 104 9822</div>
+</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table font-semibold text-on-surface">180 ha</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table text-on-surface">420 sacos</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#ECFDF5] text-[#065F46] border border-[#10B981]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Al día
+</span>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded text-secondary hover:bg-secondary/10 text-xs font-semibold">Ver Historial</button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface text-xs font-medium">Editar</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-headline-sm text-on-surface font-semibold text-sm">Acuícola San Antonio</div>
+<div class="text-label-sm font-label-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">location_on</span> Esmeraldas - Muisne
+</div>
+</td>
+<td class="py-3.5 px-4 font-code-table text-code-table text-on-surface-variant font-mono">0890123764001</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium text-xs">Ing. Boris Caicedo</div>
+<div class="text-label-sm font-label-sm text-outline">+593 96 331 4455</div>
+</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table font-semibold text-on-surface">210 ha</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table text-on-surface">510 sacos</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#ECFDF5] text-[#065F46] border border-[#10B981]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Al día
+</span>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded text-secondary hover:bg-secondary/10 text-xs font-semibold">Ver Historial</button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface text-xs font-medium">Editar</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-headline-sm text-on-surface font-semibold text-sm">Productora Marítima Chanduy</div>
+<div class="text-label-sm font-label-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">location_on</span> Santa Elena - Chanduy
+</div>
+</td>
+<td class="py-3.5 px-4 font-code-table text-code-table text-on-surface-variant font-mono">2491823901001</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium text-xs">Biol. Mariana Holguín</div>
+<div class="text-label-sm font-label-sm text-outline">+593 99 872 1198</div>
+</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table font-semibold text-on-surface">295 ha</td>
+<td class="py-3.5 px-4 text-right font-code-table text-code-table text-on-surface">680 sacos</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FEF2F2] text-[#991B1B] border border-[#EF4444]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#EF4444]"></span> Cupo excedido
+</span>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded text-secondary hover:bg-secondary/10 text-xs font-semibold">Ver Historial</button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface text-xs font-medium">Editar</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-surface border-t border-outline-variant/50 flex flex-col sm:flex-row items-center justify-between gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span>Mostrando 5 de 142 camaroneras registradas</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-outline" disabled=""><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<span class="px-2.5 py-1 rounded bg-secondary text-on-secondary font-semibold">1</span>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface">2</button>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface">29</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</section>
+<aside class="col-span-12 xl:col-span-4 space-y-5">
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl elevation-card overflow-hidden">
+<div class="p-5 border-b border-outline-variant/40 bg-surface-container-low/40">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-label-sm font-label-sm text-secondary font-bold tracking-wider uppercase">Ficha de Cliente Seleccionado</span>
+<h3 class="text-headline-md font-headline-md text-primary mt-1">Camaronera Río Guayas Cía. Ltda.</h3>
+<span class="text-body-sm font-body-sm text-outline font-mono">RUC: 0992384712001</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#ECFDF5] text-[#065F46] border border-[#10B981]/30">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Al día
+</span>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-outline-variant/30 text-xs">
+<div class="bg-surface p-2.5 rounded-xl border border-outline-variant/30">
+<span class="text-outline uppercase text-[10px] font-semibold block">Línea Asignada</span>
+<span class="text-on-surface font-headline-sm font-bold text-sm">$65,000.00</span>
+<span class="text-[11px] text-[#065F46] font-medium block mt-0.5">Disp: $41,200</span>
+</div>
+<div class="bg-surface p-2.5 rounded-xl border border-outline-variant/30">
+<span class="text-outline uppercase text-[10px] font-semibold block">Espejo de Agua</span>
+<span class="text-on-surface font-headline-sm font-bold text-sm">320 Hectáreas</span>
+<span class="text-[11px] text-outline font-medium block mt-0.5">8 piscinas activas</span>
+</div>
+</div>
+</div>
+<div class="p-5 space-y-3.5 border-b border-outline-variant/40">
+<h4 class="text-label-md font-label-md text-primary font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-base">domain</span> Datos Generales &amp; Logística
+</h4>
+<div class="space-y-2.5 text-body-sm font-body-sm">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-outline text-base mt-0.5">call</span>
+<div>
+<span class="text-outline text-xs block">Teléfono Principal / Administración:</span>
+<span class="text-on-surface font-medium">+593 (04) 289-4410 / Ext. 102</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-outline text-base mt-0.5">mail</span>
+<div>
+<span class="text-outline text-xs block">Correo de Facturación Electrónica:</span>
+<span class="text-on-surface font-medium underline text-secondary">facturacion@rioguayas.com.ec</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-outline text-base mt-0.5">anchor</span>
+<div>
+<span class="text-outline text-xs block">Ubicación de Muelle &amp; Recepción:</span>
+<span class="text-on-surface font-medium">Muelle Fluvial #3, Estero Salado Taura. Desembarco por barcaza matriz, Bodega Central Finca Isla Brava.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5 space-y-3.5">
+<div class="flex items-center justify-between">
+<h4 class="text-label-md font-label-md text-primary font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-base">receipt_long</span> Historial de Compras Recientes
+</h4>
+<span class="text-label-sm font-label-sm text-outline">Últimos 3 despachos</span>
+</div>
+<div class="space-y-2.5">
+<div class="p-3 rounded-xl bg-surface border border-outline-variant/40 space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-code-table text-code-table text-primary font-bold">#AQ-8942</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#F0F9FF] text-[#075985] border border-[#0284C7]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span> Despachado / Facturado
+</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface font-medium">120 sacos Iniciador (Balanceado Larval)</div>
+<div class="flex items-center justify-between text-xs text-outline pt-1 border-t border-outline-variant/20">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">calendar_today</span> 12 Octubre</span>
+<span class="text-on-surface font-bold font-code-table text-sm text-primary">$3,420.00 USD</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface border border-outline-variant/40 space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-code-table text-code-table text-primary font-bold">#AQ-8810</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#ECFDF5] text-[#065F46] border border-[#10B981]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Pagado
+</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface font-medium">15 galones Probiótico Concentrado + Cal Hidratada</div>
+<div class="flex items-center justify-between text-xs text-outline pt-1 border-t border-outline-variant/20">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">calendar_today</span> 28 Septiembre</span>
+<span class="text-on-surface font-bold font-code-table text-sm text-primary">$1,150.00 USD</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface border border-outline-variant/40 space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-code-table text-code-table text-primary font-bold">#AQ-8650</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#ECFDF5] text-[#065F46] border border-[#10B981]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Pagado
+</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface font-medium">200 sacos Balanceado 40% Proteína (Pellet 2.2mm)</div>
+<div class="flex items-center justify-between text-xs text-outline pt-1 border-t border-outline-variant/20">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">calendar_today</span> 14 Septiembre</span>
+<span class="text-on-surface font-bold font-code-table text-sm text-primary">$5,700.00 USD</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5 bg-surface border-t border-outline-variant/40 flex flex-col gap-2.5">
+<button class="w-full flex items-center justify-center gap-2 bg-secondary hover:bg-on-secondary-container text-on-primary py-2.5 px-4 rounded-xl text-label-md font-label-md font-semibold transition-all duration-150 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-lg">shopping_cart_checkout</span> Generar Nuevo Pedido de Insumos
+</button>
+<button class="w-full flex items-center justify-center gap-2 bg-surface-container-lowest border border-outline-variant text-on-surface hover:bg-surface-container-high py-2.5 px-4 rounded-xl text-label-md font-label-md font-medium transition-colors">
+<span class="material-symbols-outlined text-lg text-outline">picture_as_pdf</span> Descargar Estado de Cuenta PDF
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-4 elevation-card flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<div>
+<h5 class="text-headline-sm font-headline-sm text-sm text-on-surface font-bold">Calificación Comercial A+</h5>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs mt-0.5">Cumplimiento en cosechas anteriores: 100%. Aprobado para ampliación de cupo a $80,000 previa solicitud.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- MODAL: REGISTRAR NUEVA CAMARONERA / CLIENTE COMERCIAL     -->
+<!-- ======================================================== -->
+<div class="hidden fixed inset-0 z-50 overflow-y-auto bg-primary/50 backdrop-blur-sm flex items-center justify-center p-4" id="modal-nueva-camaronera">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant w-full max-w-2xl elevation-modal overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-2xl">domain_add</span>
+<div>
+<h3 class="text-headline-md font-headline-md text-primary font-bold">Registrar Nueva Camaronera</h3>
+<p class="text-body-sm font-body-sm text-outline text-xs">Alta de cliente comercial en el directorio ERP Rueda Vargas</p>
+</div>
+</div>
+<button class="p-1 rounded-xl text-outline hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="document.getElementById('modal-nueva-camaronera').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="p-6 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Razón Social o Empresa</label>
+<input class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Ej: Camaronera Bahía Azul Cía. Ltda." type="text">
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">RUC Comercial</label>
+<input class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm font-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Ej: 0990001234001" type="text">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Zona Operativa</label>
+<select class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary">
+<option>Guayas - Taura</option>
+<option>Guayas - Balao</option>
+<option>El Oro - Machala</option>
+<option>Esmeraldas - Muisne</option>
+<option>Santa Elena - Chanduy</option>
+</select>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Hectáreas de Piscina</label>
+<input class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Ej: 250" type="number">
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Cupo Crédito Solicitado</label>
+<input class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="USD $50,000" type="text">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Administrador de Campo</label>
+<input class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Nombre del Biólogo o Encargado" type="text">
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Teléfono Móvil / Satelital</label>
+<input class="w-full h-10 px-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="+593 9..." type="text">
+</div>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold mb-1">Ubicación de Muelle o Bodega de Despacho</label>
+<textarea class="w-full p-3 rounded-xl bg-surface border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Especificar muelle de embarque, acceso fluvial o vía terrestre para tanqueros y volquetas de balanceado..." rows="2"></textarea>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-center justify-end gap-3">
+<button class="px-4 py-2.5 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container text-label-md font-label-md font-medium transition-colors" onclick="document.getElementById('modal-nueva-camaronera').classList.add('hidden')" type="button">
+            Cancelar
+          </button>
+<button class="px-5 py-2.5 rounded-xl bg-secondary hover:bg-on-secondary-container text-on-primary text-label-md font-label-md font-semibold transition-all shadow-sm" onclick="document.getElementById('modal-nueva-camaronera').classList.add('hidden')" type="button">
+            Guardar y Habilitar Crédito
+          </button>
+</div>
+</form>
+</div>
+</div>
+</body></html>

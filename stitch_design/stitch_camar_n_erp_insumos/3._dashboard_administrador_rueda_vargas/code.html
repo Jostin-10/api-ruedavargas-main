@@ -1,0 +1,678 @@
+<!DOCTYPE html><html class="h-full bg-background" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Dashboard Administrador General | Rueda Vargas S.A.</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface": "#191c1e",
+          "primary-fixed": "#ffdbcd",
+          "on-secondary-fixed": "#001c37",
+          "surface-container-highest": "#e0e3e5",
+          "surface-container-lowest": "#ffffff",
+          "inverse-primary": "#ffb595",
+          "surface-container-low": "#f2f4f6",
+          "primary-container": "#c64f00",
+          "on-primary-fixed-variant": "#7c2e00",
+          "tertiary-fixed": "#93f2f2",
+          "surface-container-high": "#e6e8ea",
+          "on-tertiary-container": "#f3fffe",
+          "secondary": "#49607e",
+          "outline-variant": "#e0c0b2",
+          "surface-tint": "#a23f00",
+          "on-primary-container": "#fffbff",
+          "outline": "#8c7166",
+          "tertiary": "#006767",
+          "surface": "#f8f9fb",
+          "secondary-container": "#c4dcff",
+          "surface-bright": "#f8f9fb",
+          "surface-variant": "#e0e3e5",
+          "surface-container": "#eceef0",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#76d6d5",
+          "on-secondary": "#ffffff",
+          "primary": "#9e3d00",
+          "background": "#f8f9fb",
+          "on-tertiary": "#ffffff",
+          "on-primary-fixed": "#351000",
+          "on-surface-variant": "#594238",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#ffb595",
+          "error": "#ba1a1a",
+          "on-primary": "#ffffff",
+          "tertiary-container": "#078282",
+          "on-error-container": "#93000a",
+          "on-background": "#191c1e",
+          "on-secondary-container": "#49617f",
+          "secondary-fixed": "#d2e4ff",
+          "inverse-surface": "#2d3133",
+          "on-tertiary-fixed": "#002020",
+          "surface-dim": "#d8dadc",
+          "on-tertiary-fixed-variant": "#004f4f",
+          "on-secondary-fixed-variant": "#314865",
+          "secondary-fixed-dim": "#b0c8eb",
+          "inverse-on-surface": "#eff1f3"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "2rem"
+        },
+        "fontFamily": {
+          "label-sm": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-lg-mobile": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "label-sm": ["10px", {"lineHeight": "14px", "fontWeight": "500"}],
+          "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+          "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+          "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F8F9FB;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-full bg-background font-body-md text-on-surface antialiased flex flex-col">
+<!-- SideNavBar Anchor -->
+<aside class="flex flex-col justify-between h-full w-64 p-4 border-r border-outline-variant fixed left-0 top-0 z-40 bg-primary-container shadow-sm">
+<div class="flex flex-col gap-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2 pt-2">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-sm">
+<img alt="Rueda Vargas S.A. Logotipo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf4yBBU0atmfPyaU1rdM-_4-8JZahdHhaQKItr_-rqpC22UqdGc9OI9O8SvwCTNNPOR6ABUOzmMT5fbI7na-STmXiqWR09S9V2bAALeyJ27TKCfv47aK73fjnLyCyKM9LlULWhwuM8ghtsoHQjRa4IyaBRnXY9UmbNrwkZTncgOY-LYkDvKuJu1bLVVTZLGFrRBZ1yzvjVRkOkhFO2o43l2i6C7KLYDiyYi66EE8QRfmX4zwv0QZwN2Q">
+</div>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md font-bold text-on-primary tracking-tight">Rueda Vargas</span>
+<span class="text-label-sm font-label-sm text-secondary-container tracking-wider uppercase">Administrador</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<button class="w-full bg-secondary hover:bg-on-secondary-container text-on-secondary py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 font-headline-sm text-headline-sm shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span>Nuevo Pedido</span>
+</button>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-1.5">
+<!-- Item 0: Panel General (ACTIVE) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-tint text-on-primary font-semibold border-l-4 border-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Panel General</span>
+</a>
+<!-- Item 1: Inventario & Balanceados -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md">Inventario &amp; Balanceados</span>
+</a>
+<!-- Item 2: Ventas & Despachos -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-md font-label-md">Ventas &amp; Despachos</span>
+</a>
+<!-- Item 3: Clientes & Camaroneras -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-label-md font-label-md">Clientes &amp; Camaroneras</span>
+</a>
+<!-- Item 4: Logística & Lotes -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="text-label-md font-label-md">Logística &amp; Lotes</span>
+</a>
+<!-- Item 5: Reportes ERP -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container hover:bg-surface-tint/40 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Reportes ERP</span>
+</a>
+</nav>
+</div>
+<!-- Footer System Actions -->
+<div class="flex flex-col gap-1 pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:bg-surface-tint/30 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Configuración</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-primary-container hover:bg-surface-tint/30 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-md font-label-md">Soporte Técnico</span>
+</a>
+<div class="mt-3 px-3 py-2 bg-primary/40 rounded-lg flex items-center justify-between text-on-primary-container">
+<span class="text-label-sm font-label-sm">ERP Rueda Vargas v3.8</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="flex items-center justify-between w-full h-16 px-6 ml-64 max-w-[calc(100%-16rem)] bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-30 shadow-sm">
+<!-- Left Section: Title & Search -->
+<div class="flex items-center gap-6">
+<span class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">ERP Rueda Vargas</span>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface pl-10 pr-4 py-1.5 text-body-sm font-body-sm rounded-lg border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface placeholder:text-outline outline-none" placeholder="Buscar lote, piscina, guía o cliente..." type="text">
+</div>
+<!-- Fast links from JSON -->
+<div class="hidden lg:flex items-center gap-4 ml-2">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Lotes Activos</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Stock Crítico</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Guías de Remisión</a>
+</div>
+</div>
+<!-- Right Section: Trailing Actions & User Profile -->
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-surface text-on-surface hover:bg-surface-container-high border border-outline-variant rounded-lg text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="file_download">file_download</span>
+<span>Descargar Balance</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary-container text-on-primary hover:bg-primary rounded-lg text-label-md font-label-md shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-secondary-container" data-icon="add">add</span>
+<span>Registrar Entrada</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<!-- Icon Actions -->
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Profile Avatar -->
+<div class="flex items-center gap-2.5 pl-2">
+<img alt="Avatar de usuario Administrador Rueda Vargas" class="w-9 h-9 rounded-full object-cover ring-2 ring-secondary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRvxLLuPhSLA24_wE-0-Bj0cxEijB1KkgTe4sJ_LLy_XpNdi4kmundg2vVQXbOXnbYUEyUJXEcfgwLcmXnBAbgERe4Qm_pzFkAeKEGeGxCV2Qjs3NbBAY-PihFk3VkI3HU20Fm7SMfH7P97y17daou6P31nqU2uVyLAb9Sa1oHsGylP1OXNUjFPUBmJjU7DlsJbYn4mrOKGom0-ewXKp-3yY_rTpb4v8WH_oyztwk0QKk-4SZVu7t2xA">
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-label-md font-label-md font-semibold text-on-surface leading-tight">Ing. Roberto Noboa</span>
+<span class="text-label-sm font-label-sm text-outline">Super Admin</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Workspace Canvas -->
+<main class="ml-64 p-6 sm:p-8 space-y-6 flex-1 bg-surface custom-scrollbar overflow-y-auto">
+<!-- 1. Barra de Bienvenida & Controles Ejecutivos -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start sm:items-center gap-3">
+<div class="p-2.5 bg-surface-container-low text-secondary rounded-lg border border-secondary-fixed">
+<span class="material-symbols-outlined" data-icon="corporate_fare">corporate_fare</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-headline-md font-headline-md text-on-surface">Bienvenido, Ing. Roberto Noboa (Admin General) - Matriz Rueda Vargas S.A.</h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span> En Línea
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Control operativo general, distribución a camaroneras y balance consolidado Rueda Vargas S.A.</p>
+</div>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-3 self-end lg:self-auto">
+<div class="flex items-center bg-surface border border-outline-variant rounded-lg px-3 py-1.5 text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-outline mr-2" data-icon="calendar_month">calendar_month</span>
+<select class="bg-transparent border-0 text-on-surface text-label-md font-label-md p-0 focus:ring-0 cursor-pointer">
+<option>Mes Actual: Octubre 2024</option>
+<option>Septiembre 2024</option>
+<option>Tercer Trimestre Q3</option>
+<option>Año Fiscal 2024</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-3.5 py-2 bg-primary-container text-on-primary hover:bg-primary rounded-lg text-label-md font-label-md shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-secondary-container" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Exportar Reporte Mensual</span>
+</button>
+</div>
+</div>
+<!-- 2. Cuatro Tarjetas KPI Clave -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+<!-- KPI 1: Ventas Mes -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm hover:border-secondary-container transition-all">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant tracking-wider uppercase">Total Ventas Mes</span>
+<div class="p-2 bg-surface-container-low text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">$184,320.00</div>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="inline-flex items-center text-label-sm font-label-sm font-semibold text-on-tertiary-container bg-surface-container-low px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-sm mr-0.5" data-icon="trending_up">trending_up</span> +14.2%
+            </span>
+<span class="text-body-sm font-body-sm text-outline">vs mes anterior</span>
+</div>
+</div>
+</div>
+<!-- KPI 2: Insumos en Stock -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm hover:border-secondary-container transition-all">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant tracking-wider uppercase">Insumos en Stock</span>
+<div class="p-2 bg-surface-container-low text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">1,420 <span class="text-headline-sm font-normal text-on-surface-variant">Ton</span></div>
+<div class="text-body-sm font-body-sm text-outline mt-2 truncate">
+            Balanceados, Probióticos, Químicos
+          </div>
+</div>
+</div>
+<!-- KPI 3: Despachos Hoy -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm hover:border-secondary-container transition-all">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant tracking-wider uppercase">Pedidos Despachados Hoy</span>
+<div class="p-2 bg-surface-container-low text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">48 <span class="text-headline-sm font-normal text-on-surface-variant">Despachos</span></div>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="inline-flex items-center text-label-sm font-label-sm text-secondary bg-surface-container-low px-1.5 py-0.5 rounded font-medium">
+              A piscinas camaroneras activas
+            </span>
+</div>
+</div>
+</div>
+<!-- KPI 4: Empleados Activos -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm hover:border-secondary-container transition-all">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant tracking-wider uppercase">Empleados Activos</span>
+<div class="p-2 bg-surface-container-low text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-title-kpi font-title-kpi text-on-surface">28 <span class="text-headline-sm font-normal text-on-surface-variant">Colaboradores</span></div>
+<div class="flex items-center gap-1.5 mt-2 text-body-sm font-body-sm text-outline">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>Distribuidos en 3 sucursales</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Bento Row: 5. Gráfico de Tendencias & Acceso Directo + 4. Inventario Crítico -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Gráfico de Barras / Tendencias por Categoría (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between border-b border-outline-variant pb-4">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Ventas y Rotación por Categoría</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Desempeño financiero mensual consolidado (USD)</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm px-2.5 py-1 bg-surface-container-low text-secondary rounded-lg border border-secondary-fixed">Semana 42</span>
+</div>
+</div>
+<!-- Custom Crisp Visual Bar Chart (Tailwind Data Presentation) -->
+<div class="pt-6 pb-2 space-y-4">
+<!-- Item 1: Balanceados Skretting & Agripac -->
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-medium text-on-surface">Balanceados y Nutrición Primaria</span>
+<span class="font-bold text-on-surface">$108,400.00 (58.8%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 58.8%"></div>
+</div>
+</div>
+<!-- Item 2: Probióticos y Biológicos -->
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-medium text-on-surface">Probióticos y Biorremediación Marina</span>
+<span class="font-bold text-on-surface">$38,250.00 (20.7%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 20.7%"></div>
+</div>
+</div>
+<!-- Item 3: Químicos & Melaza -->
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-medium text-on-surface">Carbonatos, Melaza &amp; Tratamiento de Agua</span>
+<span class="font-bold text-on-surface">$22,670.00 (12.3%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 12.3%"></div>
+</div>
+</div>
+<!-- Item 4: Equipos & Aireadores -->
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1.5">
+<span class="font-medium text-on-surface">Equipos de Aireación &amp; Repuestos Splash</span>
+<span class="font-bold text-on-surface">$15,000.00 (8.2%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 8.2%"></div>
+</div>
+</div>
+</div>
+<!-- Quick Access Shortcuts to ERP Config -->
+<div class="border-t border-outline-variant pt-4 mt-2 flex flex-wrap items-center justify-between gap-2">
+<span class="text-label-sm font-label-sm uppercase text-outline">Accesos Directos ERP:</span>
+<div class="flex flex-wrap items-center gap-2">
+<a class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-low hover:bg-surface-container text-on-secondary-container rounded-lg text-label-sm font-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="tune">tune</span> Parámetros Salinidad
+            </a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-low hover:bg-surface-container text-on-secondary-container rounded-lg text-label-sm font-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="receipt_long">receipt_long</span> Facturación SRI
+            </a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-low hover:bg-surface-container text-on-secondary-container rounded-lg text-label-sm font-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="hub">hub</span> Matriz &amp; Sucursales
+            </a>
+</div>
+</div>
+</div>
+<!-- 4. Sección de Inventario Crítico y Categorías (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Inventario Crítico &amp; Categorías</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Monitoreo de bodega central en tiempo real</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="production_quantity_limits">production_quantity_limits</span>
+</div>
+<div class="space-y-3">
+<!-- Item A: Balanceado Iniciador -->
+<div class="p-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface transition-colors flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="set_meal">set_meal</span>
+</div>
+<div>
+<div class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Balanceado Iniciador 35% Proteína</div>
+<div class="text-body-sm font-body-sm text-outline">Agripac / Skretting • Lote #4492</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="text-headline-sm font-headline-sm text-on-surface">450 sacos</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-tertiary-container bg-surface-container-low px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span> Normal
+                </span>
+</div>
+</div>
+<!-- Item B: Melaza y Carbonato -->
+<div class="p-3 rounded-lg border border-error/30 bg-error-container/20 hover:bg-error-container/30 transition-colors flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="warning">warning</span>
+</div>
+<div>
+<div class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Melaza y Carbonato de Calcio</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Bodega Sur • Reabastecimiento urgente</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="text-headline-sm font-headline-sm text-error">120 sacos</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-error-container bg-error-container px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Alerta Reorden
+                </span>
+</div>
+</div>
+<!-- Item C: Aireadores Splash -->
+<div class="p-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface transition-colors flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="mode_fan">mode_fan</span>
+</div>
+<div>
+<div class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Aireadores Splash 2HP</div>
+<div class="text-body-sm font-body-sm text-outline">Maquinaria de oxigenación continua</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="text-headline-sm font-headline-sm text-on-surface">15 unidades</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-secondary-container bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+                  Disponible
+                </span>
+</div>
+</div>
+<!-- Item D: Probiótico Biorremediador -->
+<div class="p-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface transition-colors flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="science">science</span>
+</div>
+<div>
+<div class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Probiótico Biorremediador Acuático</div>
+<div class="text-body-sm font-body-sm text-outline">Concentrado Bacillus para fondo de piscina</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="text-headline-sm font-headline-sm text-on-surface">85 galones</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-tertiary-container bg-surface-container-low px-2 py-0.5 rounded-full">
+                  Estable
+                </span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant mt-2 text-center">
+<a class="text-label-md font-label-md text-secondary hover:text-on-secondary-container font-semibold inline-flex items-center gap-1" href="#">
+<span>Ver kardex completo de almacén</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- 3. Sección de Gestión de Usuarios y Roles -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<!-- Section Header -->
+<div class="p-5 border-b border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Gestión de Usuarios y Roles de Colaboradores</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Permisos granulares, auditoría de accesos y delegación por sucursal</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-outline">Total 28 miembros activos</span>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface text-secondary border border-secondary rounded-lg text-label-md font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+<span>Invitar Usuario</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant text-label-sm font-label-sm text-on-surface-variant tracking-wider uppercase">
+<th class="py-3 px-5">Colaborador</th>
+<th class="py-3 px-5">Rol en el Sistema</th>
+<th class="py-3 px-5">Sucursal / Asignación</th>
+<th class="py-3 px-5">Última Actividad</th>
+<th class="py-3 px-5">Estado</th>
+<th class="py-3 px-5 text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-md font-body-md">
+<!-- Row 1: Roberto Noboa -->
+<tr class="hover:bg-surface/60 transition-colors">
+<td class="py-3.5 px-5 flex items-center gap-3">
+<img alt="Avatar Roberto Noboa" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHw3HVzYqVXL2MoSaMWTJSKv4ZbPHFvYqH4G3buwQfoRC1nMAOZJyH2iZNo6npZK6xl0JFFgpICNU7i_JTLRlHynFr6UdfGnkuq9wQfySwecuJ8dV-YgKb3C6oXLfwibBMCHHtoB8MFVOwxIlFhq8Hs52Ihc_yFOYAnpS2ttdP2FU5J6AMPcjqGb2i0zCwhUiI96H-kMVBxckYR27-XiwRTgmcr3tWls3lA2zicntNrp8cjBnDA1RgLw">
+<div>
+<div class="font-semibold text-on-surface">Ing. Roberto Noboa</div>
+<div class="text-body-sm font-body-sm text-outline">r.noboa@ruedavargas.com</div>
+</div>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-primary-container text-on-primary">
+                  Admin General
+                </span>
+</td>
+<td class="py-3.5 px-5 text-on-surface">Matriz Rueda Vargas</td>
+<td class="py-3.5 px-5 text-on-surface-variant font-code-table text-code-table">Hace 3 minutos</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span> Activo
+                </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<button class="px-3 py-1 bg-surface-container-low hover:bg-surface-container text-secondary rounded-lg text-label-md font-label-md font-semibold transition-colors border border-outline-variant">
+                  Editar Permisos
+                </button>
+</td>
+</tr>
+<!-- Row 2: Mariana Vera -->
+<tr class="hover:bg-surface/60 transition-colors">
+<td class="py-3.5 px-5 flex items-center gap-3">
+<img alt="Avatar Mariana Vera" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJJzVLlduIx71D4XrLoC3rZ_Pbm1XxXCZaRcBqVFEIp2O9ThZTJ4FKrYNSIDeA8ZDS4dJDLfRebHxmmsbvO_L7__I1KOEzeF2KJ-026PkvatXR3TJG3eOuJH9N81JrkLdAkkubqNHdw2yXNS7TGtVo5_YJMO8nJfI-Q04Bp-8-LXJ7YHian4DhxWgVeyww5MCmaOJrtLvF_m8Q6IIu_2XMWBnqmaZmxn0HWpqLX68hZke5xUt5rf0PyA">
+<div>
+<div class="font-semibold text-on-surface">Mariana Vera Álava</div>
+<div class="text-body-sm font-body-sm text-outline">m.vera@ruedavargas.com</div>
+</div>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-secondary-fixed text-on-secondary-fixed">
+                  Cajero / Facturación
+                </span>
+</td>
+<td class="py-3.5 px-5 text-on-surface">Sucursal Machala</td>
+<td class="py-3.5 px-5 text-on-surface-variant font-code-table text-code-table">Hace 18 minutos</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span> Activo
+                </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<button class="px-3 py-1 bg-surface-container-low hover:bg-surface-container text-secondary rounded-lg text-label-md font-label-md font-semibold transition-colors border border-outline-variant">
+                  Editar Permisos
+                </button>
+</td>
+</tr>
+<!-- Row 3: Carlos Zambrano -->
+<tr class="hover:bg-surface/60 transition-colors">
+<td class="py-3.5 px-5 flex items-center gap-3">
+<img alt="Avatar Carlos Zambrano" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfNqA3_5Deqqip_USRDZBlD9Bqqazm7l8QnHYK37GJwqKm6fOTpRG-kOYoumUKRldz2fTLt1_bqU1WK6l9hAJJDJH_7FNyA6wtLmzQAd1KEZIwfV4NZW-a5O9Qhjoy5yaJwtnvcuaOjUP6Skos3BP23AbtfXQULUmEaUMA9MdUsc8BkHR_b7Z0zk3M10msaEeQVI5h85N1cFsraN4R7WLiKyM-9RVKGWXmX6RqYKuRyk-4qMl8eNlXmA">
+<div>
+<div class="font-semibold text-on-surface">Biól. Carlos Zambrano</div>
+<div class="text-body-sm font-body-sm text-outline">c.zambrano@ruedavargas.com</div>
+</div>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-container-high text-on-surface-variant">
+                  Gestor Camaroneras
+                </span>
+</td>
+<td class="py-3.5 px-5 text-on-surface">Zona Taura / Naranjal</td>
+<td class="py-3.5 px-5 text-on-surface-variant font-code-table text-code-table">Hace 1 hora</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span> Activo
+                </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<button class="px-3 py-1 bg-surface-container-low hover:bg-surface-container text-secondary rounded-lg text-label-md font-label-md font-semibold transition-colors border border-outline-variant">
+                  Editar Permisos
+                </button>
+</td>
+</tr>
+<!-- Row 4: Daniel Morales -->
+<tr class="hover:bg-surface/60 transition-colors">
+<td class="py-3.5 px-5 flex items-center gap-3">
+<img alt="Avatar Daniel Morales" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8OFEd8SSB-zGsbBjgPxKgWD1xtDSdrNxW6TWFmbSLJOb22MdBPCfRbKZ0JDiH67fYjsfUGofGp61WuvHL9t7mhL5mPmsIMH850iRHqwHzUyiV71Ep6E_Ifqjvb6isAJVonFpUFEQ8ykX7pkMVOX06kquRucyWgMqdlu5Kl1wLfMlRkW8evInBNFUyvusiA0J4lRpKrLUr5AAW1NXzW2dFE__vRZ7Y5eYBVsENOtBP0UKHyi0C4CJbSg">
+<div>
+<div class="font-semibold text-on-surface">Daniel Morales Castro</div>
+<div class="text-body-sm font-body-sm text-outline">d.morales@ruedavargas.com</div>
+</div>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-container-high text-on-surface-variant">
+                  Gestor Camaroneras
+                </span>
+</td>
+<td class="py-3.5 px-5 text-on-surface">Sucursal Chanduy</td>
+<td class="py-3.5 px-5 text-on-surface-variant font-code-table text-code-table">Ayer 17:45</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container-high text-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Inactivo
+                </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<button class="px-3 py-1 bg-surface-container-low hover:bg-surface-container text-secondary rounded-lg text-label-md font-label-md font-semibold transition-colors border border-outline-variant">
+                  Editar Permisos
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer Table Navigation -->
+<div class="p-4 bg-surface border-t border-outline-variant flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-outline">Mostrando 4 de 28 colaboradores</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 border border-outline-variant rounded bg-surface-container-lowest text-outline hover:text-on-surface disabled:opacity-50" disabled="">
+            Anterior
+          </button>
+<span class="px-3 py-1 bg-primary text-on-primary rounded text-label-sm font-label-sm">1</span>
+<button class="px-2.5 py-1 border border-outline-variant rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors">
+            2
+          </button>
+<button class="px-2.5 py-1 border border-outline-variant rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors">
+            3
+          </button>
+<button class="px-2.5 py-1 border border-outline-variant rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors">
+            Siguiente
+          </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

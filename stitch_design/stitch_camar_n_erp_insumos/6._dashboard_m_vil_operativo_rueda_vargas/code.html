@@ -1,0 +1,527 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Rueda Vargas S.A. - ERP Rueda Vargas Dashboard Móvil</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatím -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface": "#191c1e",
+          "primary-fixed": "#ffdbcd",
+          "on-secondary-fixed": "#001c37",
+          "surface-container-highest": "#e0e3e5",
+          "surface-container-lowest": "#ffffff",
+          "inverse-primary": "#ffb595",
+          "surface-container-low": "#f2f4f6",
+          "primary-container": "#9e3d00",
+          "on-primary-fixed-variant": "#7c2e00",
+          "tertiary-fixed": "#93f2f2",
+          "surface-container-high": "#e6e8ea",
+          "on-tertiary-container": "#f3fffe",
+          "secondary": "#49607e",
+          "outline-variant": "#e0c0b2",
+          "surface-tint": "#a23f00",
+          "on-primary-container": "#fffbff",
+          "outline": "#8c7166",
+          "tertiary": "#006767",
+          "surface": "#f8f9fb",
+          "secondary-container": "#c4dcff",
+          "surface-bright": "#f8f9fb",
+          "surface-variant": "#e0e3e5",
+          "surface-container": "#eceef0",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#76d6d5",
+          "on-secondary": "#ffffff",
+          "primary": "#c64f00",
+          "background": "#f8f9fb",
+          "on-tertiary": "#ffffff",
+          "on-primary-fixed": "#351000",
+          "on-surface-variant": "#594238",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#ffb595",
+          "error": "#ba1a1a",
+          "on-primary": "#ffffff",
+          "tertiary-container": "#078282",
+          "on-error-container": "#93000a",
+          "on-background": "#191c1e",
+          "on-secondary-container": "#49617f",
+          "secondary-fixed": "#d2e4ff",
+          "inverse-surface": "#2d3133",
+          "on-tertiary-fixed": "#002020",
+          "surface-dim": "#d8dadc",
+          "on-tertiary-fixed-variant": "#004f4f",
+          "on-secondary-fixed-variant": "#314865",
+          "secondary-fixed-dim": "#b0c8eb",
+          "inverse-on-surface": "#eff1f3"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "2rem"
+        },
+        "fontFamily": {
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "label-lg": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "label-sm": [
+            "10px",
+            {
+              "lineHeight": "14px",
+              "fontWeight": "500"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-sm": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }
+</script>
+<style>
+    /* Eliminación de scrollbars para carruseles touch */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex justify-center selection:bg-secondary selection:text-on-secondary antialiased">
+<!-- Contenedor móvil enmarcado (390px estricto) con ergonomía táctil -->
+<div class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col shadow-2xl pb-24">
+<!-- BARRA SUPERIOR COMPACTA -->
+<header class="bg-primary-container text-on-primary sticky top-0 z-30 px-4 pt-3 pb-3 shadow-md">
+<!-- Fila superior: Estado de Red y Conexión Satelital -->
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-primary-container/40">
+<div class="flex items-center gap-1.5">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-container"></span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="satellite_alt">satellite_alt</span>
+            ERP Rueda Vargas (Online)
+          </span>
+</div>
+<div class="flex items-center gap-2 text-on-primary-container">
+<span class="font-label-sm text-label-sm tracking-wider font-semibold text-secondary-fixed">GPS FIX 99.4%</span>
+<span class="material-symbols-outlined text-[15px] text-secondary-container" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+</div>
+</div>
+<!-- Fila principal de navegación compacta -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<button aria-label="Menú principal" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-tint/30 text-on-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="menu">menu</span>
+</button>
+<div class="leading-tight">
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-primary flex items-center gap-1">
+              Rueda Vargas S.A.
+            </h1>
+<p class="font-label-sm text-label-sm text-on-primary-container">ERP Logística &amp; Operaciones</p>
+</div>
+</div>
+<!-- Perfil / Rol Supervisor -->
+<div class="flex items-center gap-2">
+<div class="text-right">
+<p class="font-label-sm text-label-sm font-bold text-on-primary leading-none">C. Mendoza</p>
+<span class="inline-block mt-0.5 px-1.5 py-0.2 rounded bg-secondary-container/20 text-secondary-fixed font-label-sm text-[10px] leading-tight">
+              Supervisor de Campo
+            </span>
+</div>
+<div class="relative w-9 h-9 rounded-xl border border-secondary-container/30 overflow-hidden bg-primary flex-shrink-0">
+<img alt="Avatar Supervisor de Campo" class="w-full h-full object-cover" data-alt="A professional close up portrait photograph of an Ecuadorian aquaculture field supervisor wearing a navy blue corporate AquaInsumos polo and a white protective cap, standing beside a coastal shrimp pond under bright morning coastal sun. High contrast, clean corporate lighting, sharp marine blues and natural skin tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO-kAvSG2pN6w9cDnymVQq3VJ9kD3LnNzxjgtDk4VZur0AuNH2hX-t5JZpRu6Ju2I3wUN-Aj2MryG1FBWalgW076Ep8uN5aeNaVETVScDcRayWZwyQmFDVNVqwSn3HLUclU1NGG0Z6xwMJ1HqWUDwIXKTOp2NxN6PpQPwEnPQBKgw1R67m4uOJZMi6K-DtBhnYkNi6NAGaPTGBDqhVzd_Q6qyVxzi1rbLXFZwNM33lqZPdMKIAWzYAlw">
+</div>
+</div>
+</div>
+</header>
+<!-- CUERPO PRINCIPAL DEL DASHBOARD -->
+<main class="flex-1 px-4 pt-3 space-y-4">
+<!-- SELECTOR RÁPIDO DE VISTA / SEGMENTO -->
+<section aria-label="Selector de Vista Operativa">
+<div class="bg-surface-container-high/60 p-1 rounded-xl flex items-center justify-between gap-1 border border-outline-variant/30">
+<button class="flex-1 py-1.5 px-2 rounded-lg bg-surface-container-lowest text-secondary font-headline-sm text-label-md shadow-sm flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="hub">hub</span>
+<span>Operaciones</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-lg text-on-surface-variant hover:text-on-surface font-headline-sm text-label-md flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="inventory_2">inventory_2</span>
+<span>Stock Rápido</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-lg text-on-surface-variant hover:text-on-surface font-headline-sm text-label-md flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="payments">payments</span>
+<span>Ventas Hoy</span>
+</button>
+</div>
+</section>
+<!-- TARJETAS DE RESUMEN EN CARRUSEL HORIZONTAL TÁCTIL -->
+<section aria-label="Métricas Principales" class="-mx-4 px-4 overflow-x-auto no-scrollbar flex gap-3 pt-0.5 pb-1 snap-x snap-mandatory">
+<!-- Tarjeta 1: Ventas del Día -->
+<div class="snap-start flex-shrink-0 w-[240px] bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3.5 shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-16 h-16 bg-surface-container/50 rounded-full pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Ventas del Día</span>
+<span class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-title-kpi text-title-kpi text-on-surface tracking-tight font-bold">$14,850</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">USD</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="font-code-table text-code-table text-on-surface font-semibold">18 despachos</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold flex items-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span> +8.2%
+            </span>
+</div>
+</div>
+<!-- Tarjeta 2: Stock Crítico (Alerta) -->
+<div class="snap-start flex-shrink-0 w-[240px] bg-surface-container-lowest border border-error-container rounded-xl p-3.5 shadow-sm flex flex-col justify-between relative overflow-hidden bg-gradient-to-br from-surface-container-lowest to-error-container/20">
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider font-semibold">Stock Crítico</span>
+<span class="w-7 h-7 rounded-lg bg-error-container text-error flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-[18px]" data-icon="warning" data-weight="fill">warning</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-title-kpi text-title-kpi text-error tracking-tight font-bold">2 insumos</span>
+<span class="font-label-sm text-label-sm text-on-error-container bg-error-container px-1.5 py-0.5 rounded font-semibold">Alerta</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-error-container/40 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Bajo umbral mín.</span>
+<span class="font-label-sm text-label-sm text-error font-bold flex items-center gap-0.5">
+              Revisar Lotes
+              <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Tarjeta 3: Lotes en Despacho Activo -->
+<div class="snap-start flex-shrink-0 w-[180px] bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3.5 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Flete Fluvial</span>
+<span class="w-7 h-7 rounded-lg bg-secondary-fixed/40 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="sailing">sailing</span>
+</span>
+</div>
+<p class="font-title-kpi text-title-kpi text-on-surface font-bold">3 Lanchas</p>
+</div>
+<p class="font-label-sm text-label-sm text-secondary font-medium">Canal Jambelí</p>
+</div>
+</section>
+<!-- BARRA DE ACCESO RÁPIDO (4 BOTONES GENEROSOS CON ICONO) -->
+<section aria-label="Acciones Rápidas de Campo">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Acciones Inmediatas</h2>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">4 accesos</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Botón 1: Registrar Venta / Despacho -->
+<button class="flex flex-col items-start p-3 rounded-xl bg-primary-container text-on-primary shadow-sm active:scale-[0.98] transition-transform text-left group" type="button">
+<div class="w-9 h-9 rounded-lg bg-surface-tint/40 flex items-center justify-center mb-2 text-secondary-container group-hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="point_of_sale">point_of_sale</span>
+</div>
+<span class="font-headline-sm text-headline-sm leading-tight text-on-primary font-bold">Registrar Venta</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed opacity-90 mt-0.5">o Despacho Directo</span>
+</button>
+<!-- Botón 2: Consultar Camaronera -->
+<button class="flex flex-col items-start p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface shadow-sm active:scale-[0.98] transition-transform text-left group hover:border-secondary" type="button">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center mb-2 text-secondary group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="corporate_fare">corporate_fare</span>
+</div>
+<span class="font-headline-sm text-headline-sm leading-tight text-on-surface font-bold">Consultar Cliente</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Camaroneras &amp; Cupos</span>
+</button>
+<!-- Botón 3: Verificar Stock Lote -->
+<button class="flex flex-col items-start p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface shadow-sm active:scale-[0.98] transition-transform text-left group hover:border-secondary" type="button">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center mb-2 text-secondary group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<span class="font-headline-sm text-headline-sm leading-tight text-on-surface font-bold">Verificar Stock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Lotes y Balanceados</span>
+</button>
+<!-- Botón 4: Nueva Guía SRI -->
+<button class="flex flex-col items-start p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface shadow-sm active:scale-[0.98] transition-transform text-left group hover:border-secondary" type="button">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center mb-2 text-secondary group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="assignment_add">assignment_add</span>
+</div>
+<span class="font-headline-sm text-headline-sm leading-tight text-on-surface font-bold">Nueva Guía SRI</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Remisión Electrónica</span>
+</button>
+</div>
+</section>
+<!-- SECCIÓN: DESPACHOS DE INSUMOS EN RUTA -->
+<section aria-label="Despachos de Insumos en Ruta">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="local_shipping">local_shipping</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">En Ruta a Camaroneras</h2>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded-full text-secondary font-semibold">2 Activos</span>
+</div>
+<div class="space-y-3">
+<!-- Envío 1: Camión Hino -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3.5 shadow-sm relative">
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="directions_bus">directions_bus</span>
+</span>
+<div>
+<h3 class="font-code-table text-code-table font-bold text-on-surface">Camión Hino GYE-4102</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Guía SRI: #001-102-00892</p>
+</div>
+</div>
+<!-- Estado: 'En Tránsito' -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F0F9FF] text-[#075985] font-label-md text-label-md font-medium flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
+                En Tránsito
+              </span>
+</div>
+<!-- Destino y Carga -->
+<div class="bg-surface-container-low/60 rounded-lg p-2.5 space-y-1.5 border border-outline-variant/20">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Destino:</span>
+<span class="font-headline-sm text-label-md font-bold text-on-surface">Camaronera Punta Brava</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Carga transportada:</span>
+<span class="font-code-table text-code-table font-semibold text-secondary">80 sacos 35% Proteína</span>
+</div>
+</div>
+<!-- Tracking de progreso de ruta terrestre -->
+<div class="mt-3 flex items-center justify-between pt-1 text-on-surface-variant">
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="near_me">near_me</span>
+<span>Vía Balao Km 14</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">ETA: 35 min</span>
+</div>
+</article>
+<!-- Envío 2: Lancha de Carga -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3.5 shadow-sm relative">
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="directions_boat">directions_boat</span>
+</span>
+<div>
+<h3 class="font-code-table text-code-table font-bold text-on-surface">Lancha de Carga L-09</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Guía Fluvial: #004-099-00122</p>
+</div>
+</div>
+<!-- Estado: 'Entregado' -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#065F46] font-label-md text-label-md font-medium flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                Entregado
+              </span>
+</div>
+<!-- Destino y Carga -->
+<div class="bg-surface-container-low/60 rounded-lg p-2.5 space-y-1.5 border border-outline-variant/20">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Destino:</span>
+<span class="font-headline-sm text-label-md font-bold text-on-surface">Archipiélago de Jambelí</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Carga entregada:</span>
+<span class="font-code-table text-code-table font-semibold text-tertiary-container">50 sacos + Químicos</span>
+</div>
+</div>
+<!-- Confirmación de entrega en muelle -->
+<div class="mt-3 flex items-center justify-between pt-1 text-on-surface-variant">
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-[15px]" data-icon="task_alt">task_alt</span>
+<span>Recibido en Muelle 3 (Firma digital)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:42 AM</span>
+</div>
+</article>
+</div>
+</section>
+<!-- WIDGET RÁPIDO DE CLIMA Y CONDICIONES COSTERAS -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="water">water</span>
+</div>
+<div>
+<p class="font-headline-sm text-label-md font-bold text-on-surface">Marea Alta: 14:15</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Golfo de Guayaquil • Apto para zarpe</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table font-bold text-secondary">28°C</span>
+<p class="font-label-sm text-[10px] text-on-surface-variant">Humedad 84%</p>
+</div>
+</section>
+</main>
+<!-- BARRA DE NAVEGACIÓN INFERIOR MÓVIL FIJA (Bottom Navigation Bar) -->
+<nav aria-label="Navegación Móvil Principal" class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto bg-surface-container-lowest z-40 shadow-[0_-4px_16px_rgba(11,28,48,0.08)]">
+<div class="grid grid-cols-4 h-16 px-1 items-center">
+<!-- Tab 1: Inicio (Activo) -->
+<a class="flex flex-col items-center justify-center py-1 text-secondary" href="#inicio">
+<div class="w-10 h-7 rounded-full bg-secondary-fixed/50 flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard" data-weight="fill">dashboard</span>
+</div>
+<span class="font-label-sm text-[11px] font-bold tracking-tight mt-0.5">Inicio</span>
+</a>
+<!-- Tab 2: Inventario -->
+<a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface active:scale-95 transition-all" href="#inventario">
+<div class="w-10 h-7 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<span class="font-label-sm text-[11px] font-medium tracking-tight mt-0.5">Inventario</span>
+</a>
+<!-- Tab 3: Clientes -->
+<a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface active:scale-95 transition-all" href="#clientes">
+<div class="w-10 h-7 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+</div>
+<span class="font-label-sm text-[11px] font-medium tracking-tight mt-0.5">Clientes</span>
+</a>
+<!-- Tab 4: Mi Perfil -->
+<a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface active:scale-95 transition-all" href="#perfil">
+<div class="w-10 h-7 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+</div>
+<span class="font-label-sm text-[11px] font-medium tracking-tight mt-0.5">Mi Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

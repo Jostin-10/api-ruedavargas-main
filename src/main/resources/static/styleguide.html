@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>AquaInsumos - Guía de Estilos del Sistema Interno</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/config/tailwind.config.js"></script>
+</head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen">
+    <main class="max-w-5xl mx-auto px-margin md:px-margin-desktop py-space-xl space-y-space-xl">
+        <header class="flex items-center gap-space-sm">
+            <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary-container rounded-xl flex items-center justify-center text-on-primary">
+                <span class="material-symbols-outlined icon-filled">water_drop</span>
+            </div>
+            <div>
+                <h1 class="font-headline text-headline-lg">Aqua<span class="text-primary">Insumos</span></h1>
+                <p class="text-body-sm text-on-surface-variant">Guía de Estilos y Tokens del Sistema Interno (Ecuador)</p>
+            </div>
+        </header>
+
+        <section class="space-y-space-md">
+            <h2 class="font-headline text-headline-sm">Colores</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md">
+                <div class="rounded-xl p-space-md bg-primary text-on-primary text-label-lg">primary</div>
+                <div class="rounded-xl p-space-md bg-primary-container text-on-primary-container text-label-lg">primary-container</div>
+                <div class="rounded-xl p-space-md bg-secondary-container text-on-secondary-container text-label-lg">secondary-container</div>
+                <div class="rounded-xl p-space-md bg-error-container text-on-error-container text-label-lg">error-container</div>
+                <div class="rounded-xl p-space-md bg-surface-container-low text-label-lg">surface-container-low</div>
+                <div class="rounded-xl p-space-md bg-surface-container text-label-lg">surface-container</div>
+                <div class="rounded-xl p-space-md bg-surface-container-high text-label-lg">surface-container-high</div>
+                <div class="rounded-xl p-space-md bg-surface-container-highest text-label-lg">surface-container-highest</div>
+            </div>
+        </section>
+
+        <section class="space-y-space-sm">
+            <h2 class="font-headline text-headline-sm">Tipografía</h2>
+            <p class="font-headline text-headline-xl">Headline XL · Plus Jakarta Sans</p>
+            <p class="font-headline text-headline-md">Headline MD · Plus Jakarta Sans</p>
+            <p class="font-body text-body-lg">Body LG · Inter</p>
+            <p class="font-body text-body-md text-on-surface-variant">Body MD · Inter</p>
+            <p class="font-label text-label-md uppercase tracking-wide text-outline">Label MD</p>
+        </section>
+
+        <section class="space-y-space-sm">
+            <h2 class="font-headline text-headline-sm">Iconos</h2>
+            <div class="flex gap-space-md text-primary">
+                <span class="material-symbols-outlined">shopping_basket</span>
+                <span class="material-symbols-outlined">point_of_sale</span>
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                <span class="material-symbols-outlined icon-filled">stars</span>
+            </div>
+        </section>
+
+        <section class="space-y-space-md">
+            <h2 class="font-headline text-headline-sm">Componentes comunes</h2>
+            <div id="components" class="grid md:grid-cols-2 gap-space-lg"></div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { fromHTML, setText } from '/js/utils/dom.js';
+        import { Brand } from '/js/components/common/Brand.js';
+        import { Alert } from '/js/components/common/Alert.js';
+        import { Button } from '/js/components/common/Button.js';
+        import { Spinner } from '/js/components/common/Spinner.js';
+        import { FormField } from '/js/components/common/FormField.js';
+        import { PasswordInput } from '/js/components/common/PasswordInput.js';
+        import { TrustBadges } from '/js/components/common/TrustBadges.js';
+        import { Footer } from '/js/components/common/Footer.js';
+
+        const container = document.getElementById('components');
+
+        function demo(title, ...children) {
+            const card = fromHTML(`
+                <div class="bg-surface-container-lowest rounded-2xl p-space-lg space-y-space-md">
+                    <p class="font-label text-label-md uppercase tracking-wide text-outline"></p>
+                </div>`);
+            setText(card, 'p', title);
+            card.append(...children);
+            container.append(card);
+        }
+
+        demo('Brand', Brand({ size: 'sm' }), Brand({ subtitle: 'Portal de Acceso' }), Brand({ size: 'lg' }));
+
+        demo('Alert',
+            Alert({ type: 'error', title: 'Acceso no autorizado', message: 'Credenciales inválidas.' }),
+            Alert({ type: 'success', title: 'Cuenta creada', message: 'Ya puedes iniciar sesión.' }),
+            Alert({ type: 'info', message: 'Información sin botón de cerrar.', dismissible: false }));
+
+        const loadingButton = Button({ label: 'Iniciar sesión', icon: 'arrow_forward', fullWidth: true });
+        loadingButton.addEventListener('click', () => {
+            loadingButton.setLoading(true, 'Ingresando…');
+            setTimeout(() => loadingButton.setLoading(false), 1500);
+        });
+        demo('Button (clic en el primero para ver la carga)',
+            loadingButton,
+            Button({ label: 'Secundario', variant: 'secondary', fullWidth: true }),
+            Button({ label: 'Cerrar sesión', icon: 'logout', variant: 'danger' }));
+
+        const email = FormField({ name: 'email', label: 'Correo electrónico', icon: 'mail', type: 'email', hint: 'Requerido', placeholder: 'ejemplo@ruedavargas.ec' });
+        const password = PasswordInput({ name: 'password', label: 'Contraseña', placeholder: '••••••••' });
+        const validate = Button({ label: 'Validar campos', variant: 'secondary', fullWidth: true, onClick: () => {
+            email.setError(email.value ? null : 'El email es obligatorio');
+            password.setError(password.value ? null : 'La contraseña es obligatoria');
+        } });
+        demo('FormField + PasswordInput', email, password, validate);
+
+        const spinners = fromHTML('<div class="flex items-center gap-space-lg text-primary"></div>');
+        spinners.append(Spinner({ size: 'sm' }), Spinner(), Spinner({ size: 'lg' }));
+        demo('Spinner', spinners);
+
+        demo('TrustBadges + Footer', TrustBadges(), Footer());
+    </script>
+</body>
+</html>
